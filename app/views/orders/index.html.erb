@@ -2,13 +2,35 @@
 
 <h1>Orders</h1>
 
-<div id="orders">
-  <% @orders.each do |order| %>
-    <%= render order %>
-    <p>
-      <%= link_to "Show this order", order %>
-    </p>
-  <% end %>
-</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">DANFE</th>
+      <th scope="col">NFe</th>
+      <th scope="col">Nome do Cliente</th>
+      <th scope="col">CPF do Cliente</th>
+      <th scope="col">Endereco do Cliente</th>
+      <th scope="col">Status</th>
+      <th scope="col">Nome do Fornecedor</th>
+      <th scope="col">Opções</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <th scope="row">#</th>
+        <td><%=order.danfe%></th>
+        <td><%=order.nfe%></th>
+        <td><%=order.nome_cliente%></th>
+        <td><%=order.cpf_cliente%></th>
+        <td><%=order.endereco_cliente%></th>
+        <td><%=order.status_pedido%></th>
+        <td><%=order.nome_fornecedor%></th>
+        <td><%= link_to "Detalhar", order %></th>
+      </tr>
+    <%end%>
+  </tbody>
+</table>
 
 <%= link_to "New order", new_order_path %>

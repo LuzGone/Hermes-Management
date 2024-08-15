@@ -26,6 +26,10 @@ gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
+#Bootstrap
+gem 'bootstrap', '~> 5.3', '>= 5.3.3'
+gem 'dartsass-sprockets'
+
 #Used for generate random data
 #gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'main'
 
