@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  danfe: 1
+  nfe: 1
+  nome_cliente: MyString
+  cpf_cliente: 1
+  endereco_cliente: MyString
+  status_pedido: MyString
+  nome_fornecedor: MyString
+
+two:
+  danfe: 1
+  nfe: 1
+  nome_cliente: MyString
+  cpf_cliente: 1
+  endereco_cliente: MyString
+  status_pedido: MyString
+  nome_fornecedor: MyString
