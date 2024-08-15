@@ -7,3 +7,91 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+=begin
+for i in 1..100
+    Order.create!(
+        danfe: Faker::Number.number(9),
+        nfe: Faker::Number.number(44),
+        nome_cliente: Faker::Name.unique.name,
+        cpf_cliente: Faker::Number.number(11),
+        endereco_cliente: Faker::Address.full_address,
+        status_pedido: ['Pendente','A Caminho','Recebido'].sample,
+        nome_fornecedor: Faker::Company.name,
+    )
+end
+
+for i in 1..20
+    nomeCompleto = Faker::Name.unique.name 
+    Driver.create!(
+        nome: nomeCompleto,
+        matricula: Faker::Number.number(9),
+        endereco: Faker::Address.full_address,
+        telefone: Faker::Number.number(11),
+        login: nomeCompleto.split[0],
+        senha: nomeCompleto.split[0]
+    )
+end
+
+for i in 1..40
+    Vehicle.create!(
+        placa: Faker::Vehicle.model,
+        modelo: Faker::Vehicle.license_plate
+    )
+end
+
+for i in 1..10
+    nomeCompleto = Faker::Name.unique.name 
+    User.create!(
+        nome: nomeCompleto,
+        matricula: Faker::Number.number(9),
+        login: nomeCompleto.split[0],
+        senha: nomeCompleto.split[0]
+    )
+end
+=end
+
+for i in 1..200
+    Order.create!(
+        danfe: "#{(rand(0.1..1)*10**9).to_i}",
+        nfe: "#{(rand(0.1..1)*10**44).to_i}",
+        nome_cliente: "Cliente #{i}",
+        cpf_cliente: "#{(rand(0.1..1)*10**11).to_i}",
+        endereco_cliente: "Endereco Pedido #{i}",
+        status_pedido: ['Pendente','A Caminho','Recebido'].sample,
+        nome_fornecedor: "Fornecedor #{i%10}",
+    )
+end
+
+listaDeDDD = [11, 12, 13, 14, 15, 16, 17, 18, 19 , 21, 22, 24 ,31, 32, 33, 34, 35, 37, 38, 27, 28, 41, 42, 43, 44, 45, 46, 51, 53, 54, 55, 47, 48, 49, 68, 96, 92, 97, 91, 93, 94, 69, 95, 63, 82, 71, 73, 74, 75, 77, 85, 88, 98, 99, 83, 81, 87, 86, 89, 84, 79, 61, 62, 64, 65, 66, 67]
+
+for i in 1..20
+    Driver.create!(
+        nome: "Motorista #{i}",
+        matricula: "#{(rand(0.1..1)*10**11).to_i}",
+        endereco: "Endereco Motorista #{i}",
+        telefone: "(#{listaDeDDD.sample})9""#{(rand(0.1..1)*10**8).to_i}",
+        login: "motorista#{i}",
+        senha: "motorista#{i}"
+    )
+end
+
+for i in 1..40
+    Vehicle.create!(
+        placa: "#{(rand(0.1..1)*10**6).to_i}",
+        modelo: "Modelo #{i}"
+    )
+end
+
+for i in 1..10
+    User.create!(
+        nome: "Usuario #{i}",
+        matricula: "#{(rand(0.1..1)*10**11).to_i}",
+        login: "usuario#{i}",
+        senha: "usuario#{i}"
+    )
+end
+
+Admin.create!(
+    login: 'admin',
+    senha: 'admin'
+)

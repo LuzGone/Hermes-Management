@@ -22,3 +22,12 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+## Primeiros Passos
+- Ter o Postgres Instalado com o usuário: hermes e senha: hermes
+ 
+=> Depois disso só rodar os seguintes comandos em sequencia
+
+- bundler install
+- rails db:drop db:create db:migrate db:seed
+- rails s
