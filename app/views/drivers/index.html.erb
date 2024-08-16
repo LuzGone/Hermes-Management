@@ -22,7 +22,7 @@
           <td><%=driver.matricula%></th>
           <td><%=driver.endereco%></th>
           <td><%=driver.telefone%></th>
-          <td><%= link_to "Detalhar", driver %></th>
+          <td><%= link_to "Editar", edit_driver_path(driver) %> - <%= button_to "Deletar", driver, method: :delete %></th>
         </tr>
       <%end%>
     </tbody>

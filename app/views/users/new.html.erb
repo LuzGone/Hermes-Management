@@ -1,9 +1,12 @@
-<h1>New user</h1>
+<%= render partial: "/layouts/navbar"%>
+<div style="margin-left:1rem">
+  <h2>Adicionando Usuário</h2>
 
-<%= render "form", user: @user %>
+  <%= render "form", user: @user %>
 
-<br>
+  <br>
 
-<div>
-  <%= link_to "Back to users", users_path %>
+  <div>
+    <%= link_to "Voltar para usuários", users_path %>
+  </div>
 </div>

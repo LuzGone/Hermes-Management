@@ -1,9 +1,10 @@
-<h1>New order</h1>
+<%= render partial: "/layouts/navbar"%>
 
-<%= render "form", order: @order %>
-
-<br>
-
-<div>
-  <%= link_to "Back to orders", orders_path %>
+<div style="margin-left:1rem">
+  <h2>Adicionando Pedido</h2>
+  <%= render "form", order: @order %>
+  <br>
+  <div>
+    <%= link_to "Voltar para Pedidos", orders_path %>
+  </div>
 </div>

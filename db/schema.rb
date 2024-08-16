@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_15_001343) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_15_000932) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -44,13 +44,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_15_001343) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "orders_vehicles", force: :cascade do |t|
-    t.bigint "order_id"
-    t.bigint "vehicle_id"
-    t.index ["order_id"], name: "index_orders_vehicles_on_order_id"
-    t.index ["vehicle_id"], name: "index_orders_vehicles_on_vehicle_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "nome"
     t.string "matricula"
@@ -65,13 +58,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_15_001343) do
     t.string "modelo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "vehicles_drivers", force: :cascade do |t|
-    t.bigint "vehicle_id"
-    t.bigint "driver_id"
-    t.index ["driver_id"], name: "index_vehicles_drivers_on_driver_id"
-    t.index ["vehicle_id"], name: "index_vehicles_drivers_on_vehicle_id"
   end
 
 end

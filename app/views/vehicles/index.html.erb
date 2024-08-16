@@ -18,7 +18,7 @@
           <th scope="row">#</th>
           <td><%=vehicle.placa%></th>
           <td><%=vehicle.modelo%></th>
-          <td><%= link_to "Detalhar", vehicle %></th>
+          <td><%= link_to "Editar", edit_vehicle_path(vehicle) %> - <%= button_to "Deletar", vehicle, method: :delete %></th>
         </tr>
       <%end%>
     </tbody>

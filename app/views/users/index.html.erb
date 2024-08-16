@@ -18,7 +18,7 @@
           <th scope="row">#</th>
           <td><%=user.nome%></th>
           <td><%=user.matricula%></th>
-          <td><%= link_to "Detalhar", user %></th>
+          <td><%= link_to "Editar", edit_user_path(user) %> - <%= button_to "Deletar", user, method: :delete %></th>
         </tr>
       <%end%>
     </tbody>

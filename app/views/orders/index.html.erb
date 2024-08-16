@@ -28,7 +28,7 @@
           <td><%=order.endereco_cliente%></th>
           <td><%=order.status_pedido%></th>
           <td><%=order.nome_fornecedor%></th>
-          <td><%= link_to "Detalhar", order %></th>
+          <td><%= link_to "Editar", edit_order_path(order) %> - <%= button_to "Deletar", order, method: :delete %></th>
         </tr>
       <%end%>
     </tbody>
