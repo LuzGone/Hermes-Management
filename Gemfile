@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby "3.0.2"
+ruby "3.3.4"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.3", ">= 7.1.3.4"
@@ -29,6 +29,9 @@ gem "jbuilder"
 #Bootstrap
 gem 'bootstrap', '~> 5.3', '>= 5.3.3'
 gem 'dartsass-sprockets'
+
+#Pagination
+gem 'pagy', '~> 9.0', '>= 9.0.5'
 
 #Used for generate random data
 #gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'main'

@@ -1,14 +1,30 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Vehicles</h1>
-
-<div id="vehicles">
-  <% @vehicles.each do |vehicle| %>
-    <%= render vehicle %>
-    <p>
-      <%= link_to "Show this vehicle", vehicle %>
-    </p>
-  <% end %>
+<%= render partial: "/layouts/navbar"%>
+<div style="margin-left:1rem">
+<h2>Veículos</h2>
+<%= link_to "Adicionar Veículo", new_vehicle_path %>
+<div class="container">
+  <table class="table table-striped shadow-sm p-3 mb-5 bg-body-tertiary rounded border">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Placa</th>
+        <th scope="col">Modelo</th>
+        <th scope="col">Opções</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @vehicles.each do |vehicle| %>
+        <tr>
+          <th scope="row">#</th>
+          <td><%=vehicle.placa%></th>
+          <td><%=vehicle.modelo%></th>
+          <td><%= link_to "Detalhar", vehicle %></th>
+        </tr>
+      <%end%>
+    </tbody>
+  </table>
+  <div class="d-flex justify-content-center">
+    <%== pagy_bootstrap_nav(@pagy) %>
+  </div>
 </div>
-
-<%= link_to "New vehicle", new_vehicle_path %>
+</div>

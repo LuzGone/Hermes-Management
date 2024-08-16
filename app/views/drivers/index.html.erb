@@ -1,14 +1,34 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Drivers</h1>
-
-<div id="drivers">
-  <% @drivers.each do |driver| %>
-    <%= render driver %>
-    <p>
-      <%= link_to "Show this driver", driver %>
-    </p>
-  <% end %>
+<%= render partial: "/layouts/navbar"%>
+<div style="margin-left:1rem">
+<h2>Motoristas</h2>
+<%= link_to "Adicionar Motorista", new_driver_path %>
+<div class="container">
+  <table class="table table-striped shadow-sm p-3 mb-5 bg-body-tertiary rounded border">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Matricula</th>
+        <th scope="col">Endereço</th>
+        <th scope="col">Telefone</th>
+        <th scope="col">Opções</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @drivers.each do |driver| %>
+        <tr>
+          <th scope="row">#</th>
+          <td><%=driver.nome%></th>
+          <td><%=driver.matricula%></th>
+          <td><%=driver.endereco%></th>
+          <td><%=driver.telefone%></th>
+          <td><%= link_to "Detalhar", driver %></th>
+        </tr>
+      <%end%>
+    </tbody>
+  </table>
+  <div class="d-flex justify-content-center">
+    <%== pagy_bootstrap_nav(@pagy) %>
+  </div>
 </div>
-
-<%= link_to "New driver", new_driver_path %>
+</div>

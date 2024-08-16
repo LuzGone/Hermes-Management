@@ -1,14 +1,30 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Users</h1>
-
-<div id="users">
-  <% @users.each do |user| %>
-    <%= render user %>
-    <p>
-      <%= link_to "Show this user", user %>
-    </p>
-  <% end %>
+<%= render partial: "/layouts/navbar"%>
+<div style="margin-left:1rem">
+<h2>Usuários</h2>
+<%= link_to "Adicionar Usuário", new_user_path %>
+<div class="container">
+  <table class="table table-striped shadow-sm p-3 mb-5 bg-body-tertiary rounded border">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Matricula</th>
+        <th scope="col">Opções</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <th scope="row">#</th>
+          <td><%=user.nome%></th>
+          <td><%=user.matricula%></th>
+          <td><%= link_to "Detalhar", user %></th>
+        </tr>
+      <%end%>
+    </tbody>
+  </table>
+  <div class="d-flex justify-content-center">
+    <%== pagy_bootstrap_nav(@pagy) %>
+  </div>
 </div>
-
-<%= link_to "New user", new_user_path %>
+</div>
