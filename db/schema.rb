@@ -35,9 +35,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_15_000932) do
   create_table "orders", force: :cascade do |t|
     t.string "danfe"
     t.string "nfe"
-    t.string "nome_cliente"
-    t.string "cpf_cliente"
-    t.string "endereco_cliente"
+    t.string "endereco_entrega"
     t.string "status_pedido"
     t.string "nome_fornecedor"
     t.datetime "created_at", null: false

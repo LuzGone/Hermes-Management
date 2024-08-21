@@ -54,9 +54,7 @@ for i in 1..200
     Order.create!(
         danfe: "#{(rand(0.1..1)*10**9).to_i}",
         nfe: "#{(rand(0.1..1)*10**44).to_i}",
-        nome_cliente: "Cliente #{i}",
-        cpf_cliente: "#{(rand(0.1..1)*10**11).to_i}",
-        endereco_cliente: "Endereco Pedido #{i}",
+        endereco_entrega: "Endereco Entrega #{i}",
         status_pedido: ['Pendente','A Caminho','Recebido'].sample,
         nome_fornecedor: "Fornecedor #{i%10}",
     )

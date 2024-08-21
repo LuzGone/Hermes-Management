@@ -9,9 +9,7 @@
         <th scope="col">#</th>
         <th scope="col">DANFE</th>
         <th scope="col">NFe</th>
-        <th scope="col">Nome do Cliente</th>
-        <th scope="col">CPF do Cliente</th>
-        <th scope="col">Endereco do Cliente</th>
+        <th scope="col">Endereco do Entrega</th>
         <th scope="col">Status</th>
         <th scope="col">Nome do Fornecedor</th>
         <th scope="col">Opções</th>
@@ -23,9 +21,7 @@
           <th scope="row">#</th>
           <td><%=order.danfe%></th>
           <td><%=order.nfe%></th>
-          <td><%=order.nome_cliente%></th>
-          <td><%=order.cpf_cliente%></th>
-          <td><%=order.endereco_cliente%></th>
+          <td><%=order.endereco_entrega%></th>
           <td><%=order.status_pedido%></th>
           <td><%=order.nome_fornecedor%></th>
           <td><%= link_to "Editar", edit_order_path(order) %> - <%= button_to "Deletar", order, method: :delete %></th>

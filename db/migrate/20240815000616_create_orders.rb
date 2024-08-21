@@ -3,9 +3,7 @@ class CreateOrders < ActiveRecord::Migration[7.1]
     create_table :orders do |t|
       t.string :danfe
       t.string :nfe
-      t.string :nome_cliente
-      t.string :cpf_cliente
-      t.string :endereco_cliente
+      t.string :endereco_entrega
       t.string :status_pedido
       t.string :nome_fornecedor
 
