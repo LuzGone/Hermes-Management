@@ -2,6 +2,7 @@
 <div style="margin-left:1rem">
 <h2>Pedidos</h2>
 <%= link_to "Adicionar Pedido", new_order_path %>
+<button>Atribuir Pedidos Pendentes</button>
 <div class="container">
   <table class="table table-striped shadow-sm p-3 mb-5 bg-body-tertiary rounded border">
     <thead>
@@ -24,7 +25,11 @@
           <td><%=order.endereco_entrega%></th>
           <td><%=order.status_pedido%></th>
           <td><%=order.nome_fornecedor%></th>
-          <td><%= link_to "Editar", edit_order_path(order) %> - <%= button_to "Deletar", order, method: :delete %></th>
+          <td><%= link_to "Editar", edit_order_path(order) %> - <%= button_to "Deletar", order, method: :delete %> - 
+          <% if order.status_pedido == "PENDENTE" %>
+            <button>Atribuir Pedido</button>
+          <% end %>
+          </th>
         </tr>
       <%end%>
     </tbody>

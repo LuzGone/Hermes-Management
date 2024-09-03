@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :payloads
   resources :admins
   resources :users
   resources :vehicles

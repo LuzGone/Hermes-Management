@@ -55,7 +55,7 @@ for i in 1..200
         danfe: "#{(rand(0.1..1)*10**9).to_i}",
         nfe: "#{(rand(0.1..1)*10**44).to_i}",
         endereco_entrega: "Endereco Entrega #{i}",
-        status_pedido: ['Pendente','A Caminho','Recebido'].sample,
+        status_pedido: "PENDENTE", #['PENDENTE','A CAMINHO','ENTREGUE'].sample
         nome_fornecedor: "Fornecedor #{i%10}",
     )
 end

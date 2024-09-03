@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Payloads</h1>
+
+<div id="payloads">
+  <% @payloads.each do |payload| %>
+    <%= render payload %>
+    <p>
+      <%= link_to "Show this payload", payload %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New payload", new_payload_path %>
