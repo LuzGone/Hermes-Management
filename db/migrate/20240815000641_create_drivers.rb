@@ -5,6 +5,7 @@ class CreateDrivers < ActiveRecord::Migration[7.1]
       t.string :matricula
       t.string :endereco
       t.string :telefone
+      t.string :situacao
       t.string :login
       t.string :senha
 

@@ -1,0 +1,27 @@
+<%= form_with(model: driving) do |form| %>
+  <% if driving.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(driving.errors.count, "error") %> prohibited this driving from being saved:</h2>
+
+      <ul>
+        <% driving.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :driver_id, "Motorista", style: "display: block" %>
+    <%= collection_select(:driving, :driver_id, @drivers, :id, :nome) %>
+  </div>
+
+  <div>
+    <%= form.label :vehicle_id,"Placa do Veículo", style: "display: block" %>
+    <%= collection_select(:driving, :vehicle_id, @vehicles, :id, :placa , { selected: @vehicle.id }) %>
+  </div>
+
+  <div>
+    <%= form.submit "Confirmar"%>
+  </div>
+<% end %>

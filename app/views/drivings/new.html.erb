@@ -1,0 +1,13 @@
+<%= turbo_frame_tag  "modal" do%>
+  <div class="popup">
+    <h1>Atribuir Veículo à Motorista</h1>
+    <%= render "form", driving: @driving %>
+    <br>
+    <div>
+      <%= link_to "Cancel", "#", data:{
+        controller: "modals",
+        action: "modals#close"
+      }, class: "cancel-button" %>
+    </div>
+  </div>
+<%end%>

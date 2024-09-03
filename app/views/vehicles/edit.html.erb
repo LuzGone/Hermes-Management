@@ -1,4 +1,4 @@
-<%= render partial: "/layouts/navbar"%>
+<%= turbo_frame_tag "modal" do%>
 <div style="margin-left:1rem">
   <h2>Editando Veículo</h2>
 
@@ -8,5 +8,10 @@
 
   <div>
     <%= link_to "Voltar para Veículos", vehicles_path %>
+    <%= link_to "Cancel", "#", data: {
+        controller: "modals",
+        action: "modals#close"
+      }, class: "btn-sucess" %>
   </div>
 </div>
+<%end%>

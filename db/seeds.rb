@@ -68,6 +68,7 @@ for i in 1..20
         matricula: "#{(rand(0.1..1)*10**11).to_i}",
         endereco: "Endereco Motorista #{i}",
         telefone: "(#{listaDeDDD.sample})9""#{(rand(0.1..1)*10**8).to_i}",
+        situacao: "INATIVO",
         login: "motorista#{i}",
         senha: "motorista#{i}"
     )
@@ -76,7 +77,8 @@ end
 for i in 1..40
     Vehicle.create!(
         placa: "#{(rand(0.1..1)*10**6).to_i}",
-        modelo: "Modelo #{i}"
+        modelo: "Modelo #{i}",
+        situacao: "INATIVO",
     )
 end
 

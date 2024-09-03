@@ -9,6 +9,7 @@
         <th scope="col">#</th>
         <th scope="col">Placa</th>
         <th scope="col">Modelo</th>
+        <th scope="col">Situação</th>
         <th scope="col">Opções</th>
       </tr>
     </thead>
@@ -18,7 +19,8 @@
           <th scope="row">#</th>
           <td><%=vehicle.placa%></th>
           <td><%=vehicle.modelo%></th>
-          <td><%= link_to "Editar", edit_vehicle_path(vehicle) %> - <%= button_to "Deletar", vehicle, method: :delete %></th>
+          <td><%=vehicle.situacao%></th>
+          <td><%= link_to "Editar", edit_vehicle_path(vehicle), data:{turbo_frame: "modal"} %> - <%= button_to "Deletar", vehicle, method: :delete %> - <%= link_to "Atribuir Motorista", url_for(controller: :drivings, action: :new, id: vehicle.id), data:{turbo_frame: "modal"}%></th>
         </tr>
       <%end%>
     </tbody>

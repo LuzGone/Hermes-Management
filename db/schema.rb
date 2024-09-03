@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_15_000932) do
+ActiveRecord::Schema[7.1].define(version: 2024_09_03_161934) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -26,10 +26,20 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_15_000932) do
     t.string "matricula"
     t.string "endereco"
     t.string "telefone"
+    t.string "situacao"
     t.string "login"
     t.string "senha"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "drivings", force: :cascade do |t|
+    t.bigint "driver_id", null: false
+    t.bigint "vehicle_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["driver_id"], name: "index_drivings_on_driver_id"
+    t.index ["vehicle_id"], name: "index_drivings_on_vehicle_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -40,6 +50,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_15_000932) do
     t.string "nome_fornecedor"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "payloads", force: :cascade do |t|
+    t.bigint "vehicle_id"
+    t.bigint "order_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_payloads_on_order_id"
+    t.index ["vehicle_id"], name: "index_payloads_on_vehicle_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -54,8 +73,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_15_000932) do
   create_table "vehicles", force: :cascade do |t|
     t.string "placa"
     t.string "modelo"
+    t.string "situacao"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "drivings", "drivers"
+  add_foreign_key "drivings", "vehicles"
+  add_foreign_key "payloads", "orders"
+  add_foreign_key "payloads", "vehicles"
 end

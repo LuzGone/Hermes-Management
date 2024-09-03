@@ -1,4 +1,4 @@
 class Payload < ApplicationRecord
-    belongs_to :orders
-    belongs_to :vehicles
+    belongs_to :order
+    belongs_to :vehicle
 end
