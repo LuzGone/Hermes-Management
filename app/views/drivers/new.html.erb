@@ -1,4 +1,5 @@
 <%= render partial: "/layouts/navbar"%>
+<div class="main-content flex-grow-1 p-3">
 <div style="margin-left:1rem">
   <h2>Adicionando Motorista</h2>
   <%= render "form", driver: @driver %>
@@ -6,4 +7,5 @@
   <div>
     <%= link_to "Voltar para Motoristas", drivers_path %>
   </div>
+</div>
 </div>

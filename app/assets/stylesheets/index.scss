@@ -1,0 +1,91 @@
+.orders-table th,
+.orders-table td {
+  font-size: 0.875rem;
+}
+
+.badge-recebido {
+  background-color: #CAFBF1;
+  color: #0eb374;
+  border: 1px solid #a3f3a0;
+}
+
+.badge-pendente {
+  background-color: #f8d7da;
+  color: #C03E73;
+  border: 1px solid #f3a0da;
+}
+
+.badge-defaut {
+  background-color: #FCE5EA;
+  color: #BA893B;
+  border: 1px solid #f3d3a0; 
+}
+
+.btn-outline-info .bi-pencil,
+.btn-outline-danger .bi-trash {
+  font-size: 1rem;
+}
+
+.orders-table .text-center {
+  text-align: center;
+}
+
+.btn-outline-info,
+.btn-outline-danger {
+  border: none; 
+  box-shadow: none; 
+}
+
+.btn-outline-info {
+  color:#173F3F; 
+}
+
+.btn-group .btn {
+  margin-right: 5px; 
+}
+.btn-adicionar-pedido {
+    background-color: #173F3F; 
+    color: #ffffff; 
+    border: none; 
+    box-shadow: none; 
+  }
+  .btn-outline-info:hover {
+    background-color: #173F3F; 
+    color: #ffffff; 
+  }
+  
+  .btn-adicionar-pedido {
+    background-color: #173F3F; 
+    color: #ffffff; 
+    border: none; 
+    box-shadow: none;
+  }
+  
+  .btn-adicionar-pedido:hover {
+    background-color: #173F3F; 
+    color: #ffffff;
+    border: none; 
+    box-shadow: none; 
+  }
+  
+.btn-green {
+  background-color: #173F3F; 
+  color: #ffffff; 
+  border: none; 
+}
+
+.pag .page-item.active .page-link {
+  background-color: #173F3F; 
+  border-color: #173F3F; 
+}
+
+.pag .page-item .page-link {
+  color: #173F3F; 
+  border-color: #173F3F; 
+}
+
+.pag .page-item .page-link:hover {
+  background-color: #173F3F; 
+  color: #ffffff; 
+  border-color: #173F3F; 
+}
