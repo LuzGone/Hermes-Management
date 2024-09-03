@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <%= render partial: "/layouts/navbar"%>
 <div style="margin-left:1rem">
 <h2>Motoristas</h2>
@@ -31,6 +32,56 @@
   </table>
   <div class="d-flex justify-content-center">
     <%== pagy_bootstrap_nav(@pagy) %>
+=======
+<%= render partial: "/layouts/navbar" %>
+
+<div class="main-content flex-grow-1 p-3">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="text-primary">Motoristas</h2>
+    <%= link_to "Adicionar Motorista", new_driver_path, class: "btn btn-adicionar-pedido" %>
   </div>
-</div>
+
+  <div class="container-fluid">
+    <div class="table-responsive shadow-sm p-4 mb-5 bg-white rounded">
+      <table class="table table-hover table-borderless align-middle">
+        <thead class="table-light">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Matricula</th>
+            <th scope="col">Endereço</th>
+            <th scope="col">Telefone</th>
+            <th scope="col" class="text-center">Opções</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @drivers.each_with_index do |driver, index| %>
+            <tr>
+              <th scope="row"><%= index + 1 %></th>
+              <td><%= driver.nome %></td>
+              <td><%= driver.matricula %></td>
+              <td><%= driver.endereco %></td>
+              <td><%= driver.telefone %></td>
+              <td class="text-center">
+                <div class="btn-group">
+                  <%= link_to edit_driver_path(driver), class: "btn btn-sm btn-outline-info", title: "Editar" do %>
+                    <i class="bi bi-pencil"></i>
+                  <% end %>
+                  <%= button_to driver, method: :delete, class: "btn btn-sm btn-outline-danger", data: { confirm: "Você tem certeza?" }, title: "Deletar" do %>
+                    <i class="bi bi-trash"></i>
+                  <% end %>
+                </div>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Paginação -->
+    <div class="d-flex justify-content-center pag">
+      <%== pagy_bootstrap_nav(@pagy) %>
+    </div>
+>>>>>>> origin/front
+  </div>
 </div>

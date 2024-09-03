@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <%= render partial: "/layouts/navbar"%>
 <div style="margin-left:1rem">
 <h2>Pedidos</h2>
@@ -36,6 +37,67 @@
   </table>
   <div class="d-flex justify-content-center">
     <%== pagy_bootstrap_nav(@pagy) %>
+=======
+<%= render partial: "/layouts/navbar" %>
+
+<div class="main-content flex-grow-1 p-3">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="text-primary">Pedidos</h2>
+    <%= link_to "Adicionar Pedido", new_order_path, class: "btn btn-adicionar-pedido" %>
   </div>
-</div>
+
+  <div class="container-fluid">
+    <div class="table-responsive shadow-sm p-4 mb-5 bg-white rounded">
+      <table class="table table-hover table-borderless align-middle orders-table">
+        <thead class="table-light">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">DANFE</th>
+            <th scope="col">NFe</th>
+            <th scope="col">Endereço Entrega</th>
+            <th scope="col">Status</th>
+            <th scope="col">Nome do Fornecedor</th>
+            <th scope="col" class="text-center">Opções</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @orders.each_with_index do |order, index| %>
+            <tr>
+              <th scope="row"><%= index + 1 %></th>
+              <td><%= order.danfe %></td>
+              <td><%= order.nfe %></td>
+              <td><%= order.endereco_entrega %></td>
+              <td>
+                <% badge_class = case order.status_pedido
+                  when 'Recebido' then 'badge-recebido'
+                  when 'Pendente' then 'badge-pendente'
+                  else 'badge-defaut'
+                end %>
+                <span class="badge rounded-pill <%= badge_class %>">
+                  <%= order.status_pedido %>
+                </span>
+              </td>
+              <td><%= order.nome_fornecedor %></td>
+             <td class="text-center">
+              <div class="btn-group">
+                <%= link_to edit_order_path(order), class: "btn btn-sm btn-outline-info", title: "Editar" do %>
+                  <i class="bi bi-pencil"></i>
+                <% end %>
+                <%= button_to order, method: :delete, class: "btn btn-sm btn-outline-danger", data: { confirm: "Você tem certeza?" }, title: "Deletar" do %>
+                  <i class="bi bi-trash"></i>
+                <% end %>
+              </div>
+            </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Paginação -->
+    <div class="d-flex justify-content-center pag">
+      <%== pagy_bootstrap_nav(@pagy) %>
+    </div>
+>>>>>>> origin/front
+  </div>
 </div>
