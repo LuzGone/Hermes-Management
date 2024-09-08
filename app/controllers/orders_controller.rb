@@ -14,10 +14,14 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @order = Order.new
+    @suppliers = Supplier.all
   end
 
   # GET /orders/1/edit
   def edit
+    @suppliers = Supplier.all
+    @supplier = Supplier.find(params[:id])
+    @suppliers = Supplier.all
   end
 
   # POST /orders or /orders.json
@@ -66,6 +70,6 @@ class OrdersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def order_params
-      params.require(:order).permit(:danfe, :nfe, :nome_cliente, :cpf_cliente, :endereco_cliente, :status_pedido, :nome_fornecedor)
+      params.require(:order).permit(:danfe, :nfe, :endereco_entrega, :status_pedido, :supplier_id)
     end
 end

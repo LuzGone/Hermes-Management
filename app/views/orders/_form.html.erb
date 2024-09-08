@@ -27,8 +27,12 @@
   </div>
 
   <div>
-    <%= form.label :nome_fornecedor, style: "display: block" %>
-    <%= form.text_field :nome_fornecedor %>
+    <%= form.label :supplier_id, style: "display: block" %>
+    <%= collection_select(:order, :supplier_id, @suppliers, :id, :nome) %>
+  </div>
+
+  <div>
+    <%= @suppliers.inspect %>
   </div>
 
   <div>
