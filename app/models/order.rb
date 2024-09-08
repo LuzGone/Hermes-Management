@@ -1,4 +1,5 @@
 class Order < ApplicationRecord
-    has_many :payloads
-    has_many :vehicles, through: :payloads
+    belongs_to :supplier
+    has_many :transporting
+    has_many :vehicles, through: :transporting
 end

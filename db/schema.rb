@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_09_03_161934) do
+ActiveRecord::Schema[7.1].define(version: 2024_09_08_212840) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -36,6 +36,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_03_161934) do
   create_table "drivings", force: :cascade do |t|
     t.bigint "driver_id", null: false
     t.bigint "vehicle_id", null: false
+    t.datetime "dataInicial", default: "2024-09-08 22:22:39", null: false
+    t.datetime "dataFinal"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["driver_id"], name: "index_drivings_on_driver_id"
@@ -47,18 +49,30 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_03_161934) do
     t.string "nfe"
     t.string "endereco_entrega"
     t.string "status_pedido"
-    t.string "nome_fornecedor"
+    t.datetime "dataFornecimento", default: "2024-09-08 22:22:39", null: false
+    t.bigint "supplier_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["supplier_id"], name: "index_orders_on_supplier_id"
+  end
+
+  create_table "suppliers", force: :cascade do |t|
+    t.string "nome"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "payloads", force: :cascade do |t|
-    t.bigint "vehicle_id"
-    t.bigint "order_id"
+  create_table "transportings", force: :cascade do |t|
+    t.string "origem"
+    t.string "destino"
+    t.datetime "dataDespache", default: "2024-09-08 22:22:39", null: false
+    t.datetime "dataEntrega"
+    t.bigint "order_id", null: false
+    t.bigint "vehicle_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["order_id"], name: "index_payloads_on_order_id"
-    t.index ["vehicle_id"], name: "index_payloads_on_vehicle_id"
+    t.index ["order_id"], name: "index_transportings_on_order_id"
+    t.index ["vehicle_id"], name: "index_transportings_on_vehicle_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -80,6 +94,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_03_161934) do
 
   add_foreign_key "drivings", "drivers"
   add_foreign_key "drivings", "vehicles"
-  add_foreign_key "payloads", "orders"
-  add_foreign_key "payloads", "vehicles"
+  add_foreign_key "orders", "suppliers"
+  add_foreign_key "transportings", "orders"
+  add_foreign_key "transportings", "vehicles"
 end

@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  origem: MyString
+  destino: MyString
+  order: one
+  vehicle: one
+  dataDespache: 2024-09-08 18:28:40
+  dataEntrega: 2024-09-08 18:28:40
+
+two:
+  origem: MyString
+  destino: MyString
+  order: two
+  vehicle: two
+  dataDespache: 2024-09-08 18:28:40
+  dataEntrega: 2024-09-08 18:28:40

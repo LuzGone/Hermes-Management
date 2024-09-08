@@ -28,6 +28,8 @@ class DrivingsController < ApplicationController
 
     respond_to do |format|
       if @driving.save
+        @driving.driver.update(situacao: "ATIVO")
+        @driving.vehicle.update(situacao: "ATIVO")
         format.html { redirect_to driving_url(@driving), notice: "Driving was successfully created." }
         format.json { render :show, status: :created, location: @driving }
       else

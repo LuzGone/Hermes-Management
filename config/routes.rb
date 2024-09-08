@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
+  resources :suppliers
+  resources :transportings
   resources :drivings
-  resources :payloads
   resources :admins
   resources :users
   resources :vehicles

@@ -5,7 +5,10 @@ class CreateOrders < ActiveRecord::Migration[7.1]
       t.string :nfe
       t.string :endereco_entrega
       t.string :status_pedido
-      t.string :nome_fornecedor
+      
+      t.datetime :dataFornecimento, null: false, default: Time.now
+      
+      t.references :supplier, null: false, foreign_key: true
 
       t.timestamps
     end
