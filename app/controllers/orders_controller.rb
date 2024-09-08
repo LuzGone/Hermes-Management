@@ -4,6 +4,7 @@ class OrdersController < ApplicationController
   # GET /orders or /orders.json
   def index
     @pagy, @orders = pagy(Order.all, limit: 10)
+    @suppliers = Supplier.all
   end
 
   # GET /orders/1 or /orders/1.json
