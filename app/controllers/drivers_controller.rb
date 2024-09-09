@@ -25,6 +25,13 @@ class DriversController < ApplicationController
 
     respond_to do |format|
       if @driver.save
+        flash.now[:notice] = "Motorista Criado com Sucesso"
+        format.turbo_stream do
+          render turbo_stream: [
+            turbo_stream.update("toast", partial:"layouts/toast"),
+            turbo_stream.update("modal", partial: "layouts/empty")
+          ]
+        end
         format.html { redirect_to driver_url(@driver), notice: "Driver was successfully created." }
         format.json { render :show, status: :created, location: @driver }
       else
@@ -38,6 +45,13 @@ class DriversController < ApplicationController
   def update
     respond_to do |format|
       if @driver.update(driver_params)
+        flash.now[:notice] = "Motorista Editado com Sucesso"
+        format.turbo_stream do
+          render turbo_stream: [
+            turbo_stream.update("toast", partial:"layouts/toast"),
+            turbo_stream.update("modal", partial: "layouts/empty")
+          ]
+        end
         format.html { redirect_to driver_url(@driver), notice: "Driver was successfully updated." }
         format.json { render :show, status: :ok, location: @driver }
       else
@@ -52,6 +66,12 @@ class DriversController < ApplicationController
     @driver.destroy!
 
     respond_to do |format|
+      flash.now[:notice] = "Motorista Deletado com Sucesso"
+        format.turbo_stream do
+          render turbo_stream: [
+            turbo_stream.update("toast", partial:"layouts/toast"),
+          ]
+        end
       format.html { redirect_to drivers_url, notice: "Driver was successfully destroyed." }
       format.json { head :no_content }
     end

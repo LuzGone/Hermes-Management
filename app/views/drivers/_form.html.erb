@@ -1,8 +1,6 @@
 <%= form_with(model: driver) do |form| %>
   <% if driver.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(driver.errors.count, "error") %> prohibited this driver from being saved:</h2>
-
       <ul>
         <% driver.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -12,36 +10,41 @@
   <% end %>
 
   <div>
-    <%= form.label :nome, style: "display: block" %>
-    <%= form.text_field :nome %>
+    <%= form.label :nome, class: "form-label" %>
+    <%= form.text_field :nome, class: "form-control" %>
   </div>
 
   <div>
-    <%= form.label :matricula, style: "display: block" %>
-    <%= form.text_field :matricula %>
+    <%= form.label :matricula, class: "form-label" %>
+    <%= form.text_field :matricula, class: "form-control" %>
   </div>
 
   <div>
-    <%= form.label :endereco, style: "display: block" %>
-    <%= form.text_field :endereco %>
+    <%= form.label :endereco, class: "form-label" %>
+    <%= form.text_field :endereco, class: "form-control" %>
   </div>
 
   <div>
-    <%= form.label :telefone, style: "display: block" %>
-    <%= form.text_field :telefone %>
+    <%= form.label :telefone, class: "form-label" %>
+    <%= form.text_field :telefone, class: "form-control" %>
   </div>
 
   <div>
-    <%= form.label :login, style: "display: block" %>
-    <%= form.text_field :login %>
+    <%= form.label :login, class: "form-label" %>
+    <%= form.text_field :login, class: "form-control" %>
   </div>
 
   <div>
-    <%= form.label :senha, style: "display: block" %>
-    <%= form.text_field :senha %>
+    <%= form.label :senha, class: "form-label" %>
+    <%= form.password_field :senha, class: "form-control" %>
   </div>
 
   <div>
-    <%= form.submit %>
+    <br>
+    <%= form.submit "Confirmar", class: "btn btn-success"%>
+    <%= link_to "Cancelar", "#", data:{
+          controller: "modals",
+          action: "modals#close"
+        }, class: "cancel-button btn btn-danger" %>
   </div>
 <% end %>

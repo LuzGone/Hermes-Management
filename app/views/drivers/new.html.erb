@@ -1,11 +1,6 @@
-<%= render partial: "/layouts/navbar"%>
-<div class="main-content flex-grow-1 p-3">
-<div style="margin-left:1rem">
-  <h2>Adicionando Motorista</h2>
-  <%= render "form", driver: @driver %>
-  <br>
-  <div>
-    <%= link_to "Voltar para Motoristas", drivers_path %>
+<%= turbo_frame_tag  "modal" do%>
+  <div class="popup">
+      <h2>Adicionar Motorista</h2>
+      <%= render "form", driver: @driver %>
   </div>
-</div>
-</div>
+<%end%>
