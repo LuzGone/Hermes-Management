@@ -20,7 +20,6 @@ class OrdersController < ApplicationController
   # GET /orders/1/edit
   def edit
     @suppliers = Supplier.all
-    @supplier = Supplier.find(params[:id])
   end
 
   # POST /orders or /orders.json
@@ -29,8 +28,15 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       if @order.save
-        format.html { redirect_to order_url(@order), notice: "Order was successfully created." }
-        format.json { render :show, status: :created, location: @order }
+        flash.now[:notice] = "Pedido Criado com Sucesso"
+        format.turbo_stream do
+          render turbo_stream: [
+            turbo_stream.update("toast", partial:"layouts/toast"),
+            turbo_stream.update("modal", partial: "layouts/empty")
+          ]
+        end
+        format.html { redirect_to orders_path}
+        format.json { render :show, status: :ok, location: @order }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @order.errors, status: :unprocessable_entity }
@@ -42,6 +48,13 @@ class OrdersController < ApplicationController
   def update
     respond_to do |format|
       if @order.update(order_params)
+        flash.now[:notice] = "Pedido Atualizado com Sucesso"
+        format.turbo_stream do
+          render turbo_stream: [
+            turbo_stream.update("toast", partial:"layouts/toast"),
+            turbo_stream.update("modal", partial: "layouts/empty")
+          ]
+        end
         format.html { redirect_to order_url(@order), notice: "Order was successfully updated." }
         format.json { render :show, status: :ok, location: @order }
       else
@@ -56,6 +69,12 @@ class OrdersController < ApplicationController
     @order.destroy!
 
     respond_to do |format|
+      flash.now[:notice] = "Pedido Deletado com Sucesso"
+      format.turbo_stream do
+        render turbo_stream: [
+          turbo_stream.update("toast", partial:"layouts/toast")
+        ]
+      end
       format.html { redirect_to orders_url, notice: "Order was successfully destroyed." }
       format.json { head :no_content }
     end
