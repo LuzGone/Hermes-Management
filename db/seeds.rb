@@ -60,8 +60,8 @@ end
 
 for i in 1..200
     Order.create!(
-        danfe: "#{(rand(0.1..1)*10**9).to_i}",
-        nfe: "#{(rand(0.1..1)*10**44).to_i}",
+        nfe: "#{(rand(0.1..1)*10**9).to_i}",
+        danfe: "#{(rand(0.1..1)*10**44).to_i}",
         endereco_entrega: "Endereco Entrega #{i}",
         status_pedido: "PENDENTE", #['PENDENTE','A CAMINHO','ENTREGUE'].sample
         supplier_id: fornecedores.sample.id
