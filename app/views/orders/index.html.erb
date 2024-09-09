@@ -3,7 +3,7 @@
 <div class="main-content flex-grow-1 p-3">
   <div class="d-flex justify-content-between align-items-center mb-4">
     <h2 class="text-primary">Pedidos</h2>
-    <%= link_to "Adicionar Pedido", new_order_path, class: "btn btn-adicionar-pedido" %>
+    <%= link_to "Adicionar Pedido", url_for(controller: :orders, action: :new), data:{turbo_frame: "modal"}, class: "btn btn-success"%>
   </div>
 
   <div class="container-fluid">
@@ -40,7 +40,7 @@
               <td><%= @suppliers.find(order.supplier_id).nome %></td>
              <td class="text-center">
               <div class="btn-group">
-                <%= link_to edit_order_path(order), class: "btn btn-sm btn-outline-info", title: "Editar" do %>
+                <%= link_to edit_order_path(order), data:{turbo_frame: "modal"}, class: "btn btn-sm btn-outline-info", title: "Editar" do %>
                   <i class="bi bi-pencil"></i>
                 <% end %>
                 <%= button_to order, method: :delete, class: "btn btn-sm btn-outline-danger", data: { confirm: "Você tem certeza?" }, title: "Deletar" do %>

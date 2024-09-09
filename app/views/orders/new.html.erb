@@ -1,11 +1,6 @@
-<%= render partial: "/layouts/navbar"%>
-<div class="main-content flex-grow-1 p-3">
-<div style="margin-left:1rem">
-  <h2>Adicionando Pedido</h2>
-  <%= render "form", order: @order %>
-  <br>
-  <div>
-    <%= link_to "Voltar para Pedidos", orders_path %>
+<%= turbo_frame_tag  "modal" do%>
+  <div class="popup">
+      <h2>Adicionar Pedido</h2>
+      <%= render "form", order: @order %>
   </div>
-</div>
-</div>
+<%end%>

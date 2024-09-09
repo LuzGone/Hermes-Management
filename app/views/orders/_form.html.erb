@@ -27,15 +27,15 @@
   </div>
 
   <div>
-    <%= form.label :supplier_id, style: "display: block" %>
+    <%= form.label "Fornecedor", style: "display: block" %>
     <%= collection_select(:order, :supplier_id, @suppliers, :id, :nome) %>
   </div>
 
   <div>
-    <%= @suppliers.inspect %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+    <%= form.submit "Confirmar", class: "btn btn-success"%>
+    <%= link_to "Cancelar", "#", data:{
+          controller: "modals",
+          action: "modals#close"
+        }, class: "cancel-button btn btn-danger" %>
   </div>
 <% end %>
