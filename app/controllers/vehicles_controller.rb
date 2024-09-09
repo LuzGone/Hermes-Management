@@ -25,6 +25,13 @@ class VehiclesController < ApplicationController
 
     respond_to do |format|
       if @vehicle.save
+        flash.now[:notice] = "Veículo Criado com Sucesso"
+        format.turbo_stream do
+          render turbo_stream: [
+            turbo_stream.update("toast", partial:"layouts/toast"),
+            turbo_stream.update("modal", partial: "layouts/empty")
+          ]
+        end
         format.html { redirect_to vehicle_url(@vehicle), notice: "Vehicle was successfully created." }
         format.json { render :show, status: :created, location: @vehicle }
       else
@@ -38,6 +45,13 @@ class VehiclesController < ApplicationController
   def update
     respond_to do |format|
       if @vehicle.update(vehicle_params)
+        flash.now[:notice] = "Veículo Editado com Sucesso"
+        format.turbo_stream do
+          render turbo_stream: [
+            turbo_stream.update("toast", partial:"layouts/toast"),
+            turbo_stream.update("modal", partial: "layouts/empty")
+          ]
+        end
         format.html { redirect_to vehicle_url(@vehicle), notice: "Vehicle was successfully updated." }
         format.json { render :show, status: :ok, location: @vehicle }
       else
@@ -52,6 +66,12 @@ class VehiclesController < ApplicationController
     @vehicle.destroy!
 
     respond_to do |format|
+      flash.now[:notice] = "Veículo Deletado com Sucesso"
+        format.turbo_stream do
+          render turbo_stream: [
+            turbo_stream.update("toast", partial:"layouts/toast")
+          ]
+        end
       format.html { redirect_to vehicles_url, notice: "Vehicle was successfully destroyed." }
       format.json { head :no_content }
     end

@@ -1,18 +1,8 @@
-<%= turbo_frame_tag "modal" do%>
+<%= turbo_frame_tag  "modal" do%>
   <div class="popup">
     <div style="margin-left:1rem">
-      <h2>Editando Veículo</h2>
-
+      <h1>Editar Veículo</h1>
       <%= render "form", vehicle: @vehicle %>
-
-      <br>
-
-      <div>
-        <%= link_to "Voltar para Veículos", vehicles_path %>
-        <%= link_to "Cancel", "#", data: {
-            controller: "modals",
-            action: "modals#close"
-          }, class: "btn-sucess" %>
-      </div>
     </div>
+  </div>
 <%end%>

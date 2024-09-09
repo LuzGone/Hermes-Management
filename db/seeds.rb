@@ -84,7 +84,7 @@ end
 
 for i in 1..40
     Vehicle.create!(
-        placa: "#{(rand(0.1..1)*10**6).to_i}",
+        placa: "#{(rand(0.1..1)*10**7).to_i}",
         modelo: "Modelo #{i}",
         situacao: "INATIVO",
     )

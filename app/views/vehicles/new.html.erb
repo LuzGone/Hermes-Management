@@ -1,14 +1,6 @@
-<%= render partial: "/layouts/navbar"%>
-<div class="main-content flex-grow-1 p-3">
-<div style="margin-left:1rem">
-  <h2>Adicionando Veículo</h2>
-
-  <%= render "form", vehicle: @vehicle %>
-
-  <br>
-
-  <div>
-    <%= link_to "Voltar para Veículos", vehicles_path %>
+<%= turbo_frame_tag  "modal" do%>
+  <div class="popup">
+      <h2>Adicionar Veículo</h2>
+      <%= render "form", vehicle: @vehicle %>
   </div>
-</div>
-</div>
+<%end%>
