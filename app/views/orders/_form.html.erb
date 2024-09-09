@@ -1,8 +1,6 @@
 <%= form_with(model: order) do |form| %>
   <% if order.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
-
       <ul>
         <% order.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -27,8 +25,8 @@
   </div>
 
   <div>
-    <%= form.label "Fornecedor", style: "display: block" %>
-    <%= collection_select(:order, :supplier_id, @suppliers, :id, :nome) %>
+    <%= form.label :supplier_id, "Fornecedor"%>
+    <%= collection_select(:order, :supplier_id, Supplier.all, :id, :nome) %>
   </div>
 
   <div>

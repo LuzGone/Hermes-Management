@@ -21,7 +21,6 @@ class OrdersController < ApplicationController
   def edit
     @suppliers = Supplier.all
     @supplier = Supplier.find(params[:id])
-    @suppliers = Supplier.all
   end
 
   # POST /orders or /orders.json
