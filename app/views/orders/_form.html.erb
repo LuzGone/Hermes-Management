@@ -10,26 +10,27 @@
   <% end %>
 
   <div>
-    <%= form.label :danfe, style: "display: block" %>
-    <%= form.text_field :danfe %>
+    <%= form.label :danfe, class: "form-label" %>
+    <%= form.text_field :danfe, class: "form-control" %>
   </div>
 
   <div>
-    <%= form.label :nfe, style: "display: block" %>
-    <%= form.text_field :nfe %>
+    <%= form.label :nfe, class: "form-label" %>
+    <%= form.text_field :nfe, class: "form-control" %>
   </div>
 
   <div>
-    <%= form.label :endereco_entrega, style: "display: block" %>
-    <%= form.text_field :endereco_entrega %>
+    <%= form.label :endereco_entrega, class: "form-label" %>
+    <%= form.text_field :endereco_entrega, class: "form-control" %>
   </div>
 
   <div>
-    <%= form.label :supplier_id, "Fornecedor"%>
-    <%= collection_select(:order, :supplier_id, Supplier.all, :id, :nome) %>
+    <%= form.label :supplier_id, "Fornecedor", class: "form-label"%>
+    <%= collection_select(:order, :supplier_id, Supplier.all, :id, :nome, options = {}, html_options = {class: "form-select"})%>
   </div>
 
   <div>
+    <br>
     <%= form.submit "Confirmar", class: "btn btn-success"%>
     <%= link_to "Cancelar", "#", data:{
           controller: "modals",
