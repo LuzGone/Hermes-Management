@@ -51,7 +51,7 @@
                   <i class="bi bi-trash"></i>
                 <% end %>
                 <% if order.status_pedido == "PENDENTE" %>
-                  <button>Atribuir Pedido</button>
+                  <%= link_to "Atribuir Pedido", url_for(controller: :transportings, action: :new, id: order.id), data:{turbo_frame: "modal"}, class: "btn btn-info"%>
                 <% end %>
               </div>
             </td>

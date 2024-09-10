@@ -13,6 +13,7 @@ class TransportingsController < ApplicationController
   # GET /transportings/new
   def new
     @transporting = Transporting.new
+    @order = Order.find(params[:id])
   end
 
   # GET /transportings/1/edit
@@ -25,10 +26,18 @@ class TransportingsController < ApplicationController
 
     respond_to do |format|
       if @transporting.save
+        @transporting.order.update(status_pedido: "A CAMINHO")
+        flash.now[:notice] = "Pedido Atribuído com Sucesso"
+        format.turbo_stream do
+          render turbo_stream: [
+            turbo_stream.update("toast", partial:"layouts/toast"),
+            turbo_stream.update("modal", partial: "layouts/empty")
+          ]
+        end
         format.html { redirect_to transporting_url(@transporting), notice: "Transporting was successfully created." }
         format.json { render :show, status: :created, location: @transporting }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { render :new, status: :unprocessable_entity}
         format.json { render json: @transporting.errors, status: :unprocessable_entity }
       end
     end

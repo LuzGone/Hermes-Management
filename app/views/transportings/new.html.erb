@@ -1,9 +1,7 @@
-<h1>New transporting</h1>
-
-<%= render "form", transporting: @transporting %>
-
-<br>
-
-<div>
-  <%= link_to "Back to transportings", transportings_path %>
-</div>
+<%= turbo_frame_tag  "modal" do%>
+  <div class="popup">
+    <h1>Atribuir Pedido</h1>
+    <%= render "form", transporting: @transporting %>
+    <br>
+  </div>
+<%end%>

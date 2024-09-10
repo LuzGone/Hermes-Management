@@ -1,8 +1,6 @@
 <%= form_with(model: transporting) do |form| %>
   <% if transporting.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(transporting.errors.count, "error") %> prohibited this transporting from being saved:</h2>
-
       <ul>
         <% transporting.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -12,36 +10,37 @@
   <% end %>
 
   <div>
-    <%= form.label :origem, style: "display: block" %>
-    <%= form.text_field :origem %>
+    <%= form.label :origem, class: "form-label" %>
+    <%= form.text_field :origem, class:"form-control"%>
   </div>
 
   <div>
-    <%= form.label :destino, style: "display: block" %>
-    <%= form.text_field :destino %>
+    <%= form.label :destino, class: "form-label" %>
+    <%= form.text_field :destino, class:"form-control"%>
   </div>
 
   <div>
-    <%= form.label :order_id, style: "display: block" %>
-    <%= form.text_field :order_id %>
+    <%= form.label :order_id, "Nfe do Pedido", class: "form-label" %>
+    <div class="form-control"> <%= @order.nfe%> </div>
+    <%= collection_select(:transporting, :order_id, Order.all, :id, :nfe , options = {selected: @order.id}, html_options = {class: "form-select", hidden:"hidden"}) %>
   </div>
 
   <div>
-    <%= form.label :vehicle_id, style: "display: block" %>
-    <%= form.text_field :vehicle_id %>
+    <%= form.label "Código de Rastreio do Pedido", class: "form-label" %>
+    <div class="form-control"> <%= @order.codigo_rastreio%> </div>
   </div>
 
   <div>
-    <%= form.label :dataDespache, style: "display: block" %>
-    <%= form.datetime_field :dataDespache %>
+    <%= form.label :vehicle_id,"Placa do Veículo", class: "form-label" %>
+    <%= collection_select(:transporting, :vehicle_id, Vehicle.where(situacao:"ATIVO"), :id, :placa , options = {}, html_options = {class: "form-select"}) %>
   </div>
 
   <div>
-    <%= form.label :dataEntrega, style: "display: block" %>
-    <%= form.datetime_field :dataEntrega %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+    <br>
+    <%= form.submit "Confirmar", class: "btn btn-success"%>
+    <%= link_to "Cancelar", "#", data:{
+          controller: "modals",
+          action: "modals#close"
+        }, class: "cancel-button btn btn-danger" %>
   </div>
 <% end %>
