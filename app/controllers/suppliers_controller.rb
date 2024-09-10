@@ -3,7 +3,7 @@ class SuppliersController < ApplicationController
 
   # GET /suppliers or /suppliers.json
   def index
-    @suppliers = Supplier.all
+    @pagy, @suppliers = pagy(Supplier.all, limit: 10)
   end
 
   # GET /suppliers/1 or /suppliers/1.json
@@ -25,6 +25,13 @@ class SuppliersController < ApplicationController
 
     respond_to do |format|
       if @supplier.save
+        flash.now[:notice] = "Fornecedor Criado com Sucesso"
+        format.turbo_stream do
+          render turbo_stream: [
+            turbo_stream.update("toast", partial:"layouts/toast"),
+            turbo_stream.update("modal", partial: "layouts/empty")
+          ]
+        end
         format.html { redirect_to supplier_url(@supplier), notice: "Supplier was successfully created." }
         format.json { render :show, status: :created, location: @supplier }
       else
@@ -38,6 +45,13 @@ class SuppliersController < ApplicationController
   def update
     respond_to do |format|
       if @supplier.update(supplier_params)
+        flash.now[:notice] = "Fornecedor Editado com Sucesso"
+        format.turbo_stream do
+          render turbo_stream: [
+            turbo_stream.update("toast", partial:"layouts/toast"),
+            turbo_stream.update("modal", partial: "layouts/empty")
+          ]
+        end
         format.html { redirect_to supplier_url(@supplier), notice: "Supplier was successfully updated." }
         format.json { render :show, status: :ok, location: @supplier }
       else
@@ -52,6 +66,12 @@ class SuppliersController < ApplicationController
     @supplier.destroy!
 
     respond_to do |format|
+      flash.now[:notice] = "Fornecedor Excluído com Sucesso"
+        format.turbo_stream do
+          render turbo_stream: [
+            turbo_stream.update("toast", partial:"layouts/toast")
+          ]
+        end
       format.html { redirect_to suppliers_url, notice: "Supplier was successfully destroyed." }
       format.json { head :no_content }
     end
