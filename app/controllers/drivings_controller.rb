@@ -45,6 +45,9 @@ class DrivingsController < ApplicationController
   def update
     respond_to do |format|
       if @driving.update(driving_params)
+        @driving.update(data_final: Time.now)
+        @driving.driver.update(situacao: "INATIVO")
+        @driving.vehicle.update(situacao: "INATIVO")
         format.html { redirect_to driving_url(@driving), notice: "Driving was successfully updated." }
         format.json { render :show, status: :ok, location: @driving }
       else
