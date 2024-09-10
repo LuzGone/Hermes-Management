@@ -13,9 +13,11 @@ class DrivingsController < ApplicationController
   # GET /drivings/new
   def new
     @driving = Driving.new
-    @drivers = Driver.all
-    @vehicle = Vehicle.find(params[:id])
-    @vehicles = Vehicle.all
+    if params[:is_vehicle]
+      @vehicle = Vehicle.find(params[:id])
+    elsif params[:is_driver]
+      @driver = Driver.find(params[:id])
+    end
   end
 
   # GET /drivings/1/edit
