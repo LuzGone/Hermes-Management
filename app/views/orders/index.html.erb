@@ -32,8 +32,8 @@
               <td><%= order.endereco_entrega %></td>
               <td>
                 <% badge_class = case order.status_pedido
-                  when 'Recebido' then 'badge-recebido'
-                  when 'Pendente' then 'badge-pendente'
+                  when 'ENTREGUE' then 'badge-recebido'
+                  when 'PENDENTE' then 'badge-pendente'
                   else 'badge-defaut'
                 end %>
                 <span class="badge rounded-pill <%= badge_class %>">

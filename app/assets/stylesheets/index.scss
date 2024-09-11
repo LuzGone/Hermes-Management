@@ -3,13 +3,13 @@
   font-size: 0.875rem;
 }
 
-.badge-recebido {
+.badge-recebido, .badge-ativo {
   background-color: #CAFBF1;
   color: #0eb374;
   border: 1px solid #a3f3a0;
 }
 
-.badge-pendente {
+.badge-pendente, .badge-inativo {
   background-color: #f8d7da;
   color: #C03E73;
   border: 1px solid #f3a0da;

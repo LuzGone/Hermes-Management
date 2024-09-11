@@ -27,7 +27,17 @@
               <td><%= driver.matricula %></td>
               <td><%= driver.endereco %></td>
               <td><%= driver.telefone %></td>
-              <td><%= driver.situacao %></td>
+              <td>
+                <% badge_class = case driver.situacao
+                  when 'ATIVO' then 'badge-ativo'
+                  when 'INATIVO' then 'badge-inativo'
+                  else 'badge-defaut'
+                end %>
+                <span class="badge rounded-pill <%= badge_class %>">
+                  <%= driver.situacao %>
+                </span>
+
+              </td>
               <td class="text-center">
                 <div class="btn-group">
                   <%= link_to edit_driver_path(driver), data:{turbo_frame: "modal"}, class: "btn btn-sm btn-outline-info", title: "Editar" do %>
