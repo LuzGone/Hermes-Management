@@ -47,11 +47,21 @@
                 <%= link_to edit_order_path(order), data:{turbo_frame: "modal"}, class: "btn btn-sm btn-outline-info", title: "Editar" do %>
                   <i class="bi bi-pencil"></i>
                 <% end %>
+                <%= link_to order_path(order), class: "btn btn-sm btn-outline-info", title: "Detalhar" do %>
+                  <i class="bi bi-search"></i>
+                <% end %>
+                <% if order.status_pedido != "ENTREGUE"%>
+                  <%= link_to url_for(controller: :transportings, action: :new, id: order.id), data:{turbo_frame:"modal"},  class: "btn btn-sm btn-outline-info", title: "Atualizar Rota" do %>
+                    <i class="bi bi-arrow-repeat"></i>
+                  <% end %>
+                <% end %>
+                <% if order.status_pedido == "A CAMINHO" %>
+                  <%= link_to url_for(controller: :orders, action: :mark_as_delivered, id: order.id), class: "btn btn-sm btn-outline-info", title: "Marcar como Entregue" do %>
+                  <i class="bi bi-check-lg"></i>
+                  <% end %>
+                <% end %>
                 <%= button_to order, method: :delete, class: "btn btn-sm btn-outline-danger", data: { confirm: "Você tem certeza?" }, title: "Deletar" do %>
                   <i class="bi bi-trash"></i>
-                <% end %>
-                <% if order.status_pedido == "PENDENTE" %>
-                  <%= link_to "Atribuir Pedido", url_for(controller: :transportings, action: :new, id: order.id), data:{turbo_frame: "modal"}, class: "btn btn-info"%>
                 <% end %>
               </div>
             </td>

@@ -17,4 +17,7 @@ Rails.application.routes.draw do
   root to: "main#index"
 
   get '/rastreio/:codigo_rastreio', to: 'orders#show_by_codigo_rastreio'
+
+  get '/mark_as_delivered/:id', to:'orders#mark_as_delivered'
+
 end

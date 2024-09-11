@@ -9,12 +9,15 @@ class OrdersController < ApplicationController
 
   # GET /orders/1 or /orders/1.json
   def show
+    @transportings = Transporting.where(order_id: @order.id)
   end
 
   def show_by_codigo_rastreio
     @order = Order.find_by(codigo_rastreio: params[:codigo_rastreio])
     if @order
-      render json: @order
+      @transportings = Transporting.where(order_id: @order.id)
+      @pedido = {pedido:@order,historico:@transportings}
+      render json: @pedido
     else
       head :not_found
     end
@@ -24,6 +27,17 @@ class OrdersController < ApplicationController
   def new
     @order = Order.new
     @suppliers = Supplier.all
+  end
+
+  def mark_as_delivered
+    @order = Order.find(params[:id])
+    @order.update(status_pedido: "ENTREGUE")
+    @transporting = Transporting.where(order_id: @order.id).last
+    @transporting.update(data_entrega: Time.now)
+    flash[:notice] = "Pedido Atualizado com Sucesso"
+    @pagy, @orders = pagy(Order.all, limit: 10)
+    @suppliers = Supplier.all
+    render :index
   end
 
   # GET /orders/1/edit

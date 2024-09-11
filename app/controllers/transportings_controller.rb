@@ -23,10 +23,15 @@ class TransportingsController < ApplicationController
   # POST /transportings or /transportings.json
   def create
     @transporting = Transporting.new(transporting_params)
-
+    @last_transporting = Transporting.where(order_id: @transporting.order.id).last
+    
     respond_to do |format|
       if @transporting.save
-        @transporting.order.update(status_pedido: "A CAMINHO")
+        if @last_transporting 
+          @last_transporting.update(data_entrega: Time.now)
+        else
+          @transporting.order.update(status_pedido: "A CAMINHO")
+        end
         flash.now[:notice] = "Pedido Atribuído com Sucesso"
         format.turbo_stream do
           render turbo_stream: [

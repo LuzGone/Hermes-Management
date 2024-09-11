@@ -1,10 +1,41 @@
-<p style="color: green"><%= notice %></p>
+<%= render partial: "/layouts/navbar" %>
 
-<%= render @order %>
-
-<div>
-  <%= link_to "Edit this order", edit_order_path(@order) %> |
-  <%= link_to "Back to orders", orders_path %>
-
-  <%= button_to "Destroy this order", @order, method: :delete %>
+<div class="main-content flex-grow-1 p-3">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="text-primary">Pedido <%= @order.codigo_rastreio%></h2>
+  </div>
+  <div class="container-fluid">
+    <div class="container">
+      <h4>Danfe</h4>
+      <%= @order.danfe%>
+    </div>
+    <div class="container">
+      <h4>NFe</h4>
+      <%= @order.nfe%>
+    </div>
+    <div class="container">
+      <h4>Endereço de Entrega</h4>
+      <%= @order.endereco_entrega%>
+    </div>
+    <div class="container">
+      <h4>Status do Pedido</h4>
+      <%= @order.status_pedido%>
+    </div>
+    <div class="container">
+      <h4> Código de Rastreio</h4>
+      <%= @order.codigo_rastreio%>
+    </div>
+    <div class="container">
+      <h4>Data de Fornecimento</h4>
+      <%= @order.data_fornecimento%>
+    </div>
+    <div class="container">
+      <h4> Fornecedor</h4>
+      <%= Supplier.find(@order.supplier_id).nome%>
+    </div>
+  </div>
+  <div>
+    <h3>Histórico do Pedido</h3>
+    <%= render @transportings%>
+  </div>
 </div>
