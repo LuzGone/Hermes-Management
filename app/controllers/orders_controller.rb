@@ -11,6 +11,15 @@ class OrdersController < ApplicationController
   def show
   end
 
+  def show_by_codigo_rastreio
+    @order = Order.find_by(codigo_rastreio: params[:codigo_rastreio])
+    if @order
+      render json: @order
+    else
+      head :not_found
+    end
+  end
+
   # GET /orders/new
   def new
     @order = Order.new
