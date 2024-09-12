@@ -8,6 +8,8 @@ class VehiclesController < ApplicationController
 
   # GET /vehicles/1 or /vehicles/1.json
   def show
+    @transportings = Transporting.where(vehicle_id: @vehicle.id)
+    @drivings = Driving.where(vehicle_id: @vehicle.id)
   end
 
   # GET /vehicles/new
@@ -17,6 +19,10 @@ class VehiclesController < ApplicationController
 
   # GET /vehicles/1/edit
   def edit
+  end
+
+  def unlink
+    
   end
 
   # POST /vehicles or /vehicles.json

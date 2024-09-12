@@ -43,10 +43,21 @@
                   <%= link_to edit_driver_path(driver), data:{turbo_frame: "modal"}, class: "btn btn-sm btn-outline-info", title: "Editar" do %>
                     <i class="bi bi-pencil"></i>
                   <% end %>
+                  <%= link_to driver_path(driver), class: "btn btn-sm btn-outline-info", title: "Detalhar" do %>
+                    <i class="bi bi-search"></i>
+                  <% end %>
                   <%= button_to driver, method: :delete, class: "btn btn-sm btn-outline-danger", data: { confirm: "Você tem certeza?" }, title: "Deletar" do %>
                     <i class="bi bi-trash"></i>
                   <% end %>
-                  <%= link_to "Vincular Veículo", url_for(controller: :drivings, action: :new, id: driver.id, is_driver: true), data:{turbo_frame: "modal"}%>
+                  <% if driver.situacao == "ATIVO"%>
+                    <%= link_to url_for(controller: :drivings, action: :unlink, id: driver.id, is_driver: true), class: "btn btn-sm btn-outline-info", data:{turbo_frame: "modal"}, title:"Vincular Veículo" do%>
+                      <span> Desvincular Veículo</span>
+                    <% end%>
+                  <% else %>
+                    <%= link_to url_for(controller: :drivings, action: :new, id: driver.id, is_driver: true), class: "btn btn-sm btn-outline-info", data:{turbo_frame: "modal"}, title:"Vincular Veículo" do%>
+                      <span> Vincular Veículo</span>
+                    <% end%>
+                  <% end%>
                 </div>
               </td>
             </tr>

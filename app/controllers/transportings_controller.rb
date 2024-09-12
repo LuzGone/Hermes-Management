@@ -23,6 +23,7 @@ class TransportingsController < ApplicationController
   # POST /transportings or /transportings.json
   def create
     @transporting = Transporting.new(transporting_params)
+    @transporting.data_despache = Time.now
     @last_transporting = Transporting.where(order_id: @transporting.order.id).last
     
     respond_to do |format|
