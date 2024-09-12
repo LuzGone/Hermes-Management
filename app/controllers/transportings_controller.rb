@@ -33,6 +33,7 @@ class TransportingsController < ApplicationController
         else
           @transporting.order.update(status_pedido: "A CAMINHO")
         end
+        atualizar_redis(@transporting)
         flash.now[:notice] = "Pedido Atribuído com Sucesso"
         format.turbo_stream do
           render turbo_stream: [
@@ -76,6 +77,13 @@ class TransportingsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_transporting
       @transporting = Transporting.find(params[:id])
+    end
+
+    def atualizar_redis(transporting)
+      order = transporting.order
+      transportings = Transporting.where(order_id: order.id)
+      pedido = {pedido:order,historico:transportings}
+      REDIS.set("order:#{order.codigo_rastreio}", pedido.to_json)
     end
 
     # Only allow a list of trusted parameters through.

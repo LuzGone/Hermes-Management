@@ -37,7 +37,7 @@ gem 'pagy', '~> 9.0', '>= 9.0.5'
 #gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'main'
 
 # Use Redis adapter to run Action Cable in production
-# gem "redis", ">= 4.0.1"
+gem "redis"
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
