@@ -31,3 +31,7 @@ Things you may want to cover:
 - bundler install
 - rails db:drop db:create db:migrate db:seed
 - rails s
+
+Comando para rodar o Redis
+- docker run -d --name redis-stack -p 6379:6379 -p 8001:8001 redis/redis-stack:latest
+- docker exec -it redis-stack redis-cli
