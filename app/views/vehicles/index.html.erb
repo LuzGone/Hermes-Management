@@ -42,7 +42,7 @@
                   <%= link_to vehicle_path(vehicle), class: "btn btn-sm btn-outline-info", title: "Detalhar" do %>
                     <i class="bi bi-search"></i>
                   <% end %>
-                  <%= button_to vehicle, method: :delete, class: "btn btn-sm btn-outline-danger", data: { confirm: "Você tem certeza?" }, title: "Deletar" do %>
+                  <%= button_to vehicle, method: :delete, class: "btn btn-sm btn-outline-danger", data: { "turbo-method": :delete, 'turbo-confirm': "Você tem Certeza?" }, title: "Deletar" do %>
                     <i class="bi bi-trash"></i>
                   <% end %>
                   <%= link_to "Atribuir Motorista", url_for(controller: :drivings, action: :new, id: vehicle.id, is_vehicle: true), data:{turbo_frame: "modal"}%>

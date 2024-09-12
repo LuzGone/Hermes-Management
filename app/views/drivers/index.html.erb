@@ -46,7 +46,7 @@
                   <%= link_to driver_path(driver), class: "btn btn-sm btn-outline-info", title: "Detalhar" do %>
                     <i class="bi bi-search"></i>
                   <% end %>
-                  <%= button_to driver, method: :delete, class: "btn btn-sm btn-outline-danger", data: { confirm: "Você tem certeza?" }, title: "Deletar" do %>
+                  <%= button_to driver, method: :delete, class: "btn btn-sm btn-outline-danger", data: { "turbo-method": :delete, 'turbo-confirm': "Você tem Certeza?" }, title: "Deletar" do %>
                     <i class="bi bi-trash"></i>
                   <% end %>
                   <% if driver.situacao == "ATIVO"%>

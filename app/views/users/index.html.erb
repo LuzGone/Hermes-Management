@@ -28,7 +28,7 @@
                   <%= link_to edit_user_path(user), class: "btn btn-sm btn-outline-info", title: "Editar" do %>
                     <i class="bi bi-pencil"></i>
                   <% end %>
-                  <%= button_to user, method: :delete, class: "btn btn-sm btn-outline-danger", data: { confirm: "Você tem certeza?" }, title: "Deletar" do %>
+                  <%= button_to user, method: :delete, class: "btn btn-sm btn-outline-danger", data: { "turbo-method": :delete, 'turbo-confirm': "Você tem Certeza?" }, title: "Deletar" do %>
                     <i class="bi bi-trash"></i>
                   <% end %>
                 </div>
