@@ -20,4 +20,6 @@ Rails.application.routes.draw do
 
   get '/mark_as_delivered/:id', to:'orders#mark_as_delivered'
 
+  get '/unlink/:id', to:'drivings#unlink'
+
 end

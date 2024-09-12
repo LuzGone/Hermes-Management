@@ -20,6 +20,29 @@ class DrivingsController < ApplicationController
     end
   end
 
+  def unlink
+    if params[:is_vehicle]
+      @driving = Driving.where(vehicle_id: params[:id]).last
+    elsif params[:is_driver]
+      @driving = Driving.where(driver_id: params[:id]).last
+    end
+    @driving.update(data_final: Time.now)
+    @driving.driver.update(situacao: "INATIVO")
+    @driving.vehicle.update(situacao: "INATIVO")
+
+    if params[:is_vehicle]
+      flash[:notice] = "Pedido Atualizado com Sucesso"
+      @pagy, @vehicles = pagy(Vehicle.all, limit: 10)
+      @drivings = Driving.all
+      render controller: 'vehicles', action: 'index'
+    elsif params[:is_driver]
+      flash[:notice] = "Pedido Atualizado com Sucesso"
+      @pagy, @drivers = pagy(Driver.all, limit: 10)
+      @drivings = Driving.all
+      render controller: 'drivers', action: 'index'
+    end
+  end
+
   # GET /drivings/1/edit
   def edit
   end
@@ -27,6 +50,7 @@ class DrivingsController < ApplicationController
   # POST /drivings or /drivings.json
   def create
     @driving = Driving.new(driving_params)
+    @driving.data_inicial = Time.now
 
     respond_to do |format|
       if @driving.save

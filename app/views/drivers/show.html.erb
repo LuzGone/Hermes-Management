@@ -1,10 +1,38 @@
-<p style="color: green"><%= notice %></p>
+<%= render partial: "/layouts/navbar" %>
 
-<%= render @driver %>
+<div class="main-content flex-grow-1 p-3">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="text-primary">Motorista -  <%= @driver.nome%></h2>
+  </div>
+  <div class="container-fluid">
+    <div class="container">
+      <h4>Nome</h4>
+      <%= @driver.nome%>
+    </div>
+    <div class="container">
+      <h4>Matrícula</h4>
+      <%= @driver.matricula%>
+    </div>
+    <div class="container">
+      <h4>Endereço</h4>
+      <%= @driver.endereco%>
+    </div>
+    <div class="container">
+      <h4>Telefone</h4>
+      <%= @driver.telefone%>
+    </div>
+    <div class="container">
+      <h4>situacao</h4>
+      <%= @driver.situacao%>
+    </div>
+    <div class="container">
+      <h4>Login</h4>
+      <%= @driver.login%>
+    </div>
+  </div>
 
-<div>
-  <%= link_to "Edit this driver", edit_driver_path(@driver) %> |
-  <%= link_to "Back to drivers", drivers_path %>
-
-  <%= button_to "Destroy this driver", @driver, method: :delete %>
+  <div>
+    <h3>Histórico de Veículos do Motorista</h3>
+    <%= render @drivings%>
+  </div>
 </div>
