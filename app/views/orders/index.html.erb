@@ -60,7 +60,7 @@
                   <i class="bi bi-check-lg"></i>
                   <% end %>
                 <% end %>
-                <%= button_to order, method: :delete, class: "btn btn-sm btn-outline-danger", data: { confirm: "Você tem certeza?" }, title: "Deletar" do %>
+                <%= button_to order, method: :delete, class: "btn btn-sm btn-outline-danger", data: { "turbo-method": :delete, 'turbo-confirm': "Você tem Certeza?" }, title: "Deletar" do %>
                   <i class="bi bi-trash"></i>
                 <% end %>
               </div>
