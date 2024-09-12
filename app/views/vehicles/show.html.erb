@@ -2,29 +2,33 @@
 
 <div class="main-content flex-grow-1 p-3">
   <div class="d-flex justify-content-between align-items-center mb-4">
-    <h2 class="text-primary">Veículo <%= @vehicle.placa%></h2>
+    <h2 class="titulo">Veículo <%= @vehicle.placa%></h2>
   </div>
   <div class="container-fluid">
-    <div class="container">
-      <h4>Placa</h4>
-      <%= @vehicle.placa%>
+    <div class="card p-4 shadow-sm mb-4">
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <h4 class="info-titulo">Placa</h4>
+          <p class="info-conteudo"><%= @vehicle.placa %></p>
+        </div>
+        <div class="col-md-6 mb-3">
+          <h4 class="info-titulo">Modelo</h4>
+          <p class="info-conteudo"><%= @vehicle.modelo %></p>
+        </div>
+        <div class="col-md-6 mb-3">
+          <h4 class="info-titulo">Situação</h4>
+          <p class="info-conteudo"><%= @vehicle.situacao %></p>
+        </div>
+      </div>
     </div>
-    <div class="container">
-      <h4>Modelo</h4>
-      <%= @vehicle.modelo%>
+    <div class="card p-4 shadow-sm mt-5">
+      <h3>Histórico de Transportes do Veículo</h3>
+      <%= render @transportings%>
     </div>
-    <div class="container">
-      <h4>Situação</h4>
-      <%= @vehicle.situacao%>
-    </div>
-  </div>
-  <div>
-    <h3>Histórico de Transportes do Veículo</h3>
-    <%= render @transportings%>
-  </div>
 
-  <div>
-    <h3>Histórico de Motoristas do Veículo</h3>
-    <%= render @drivings%>
+    <div class="card p-4 shadow-sm mt-5">
+      <h3>Histórico de Motoristas do Veículo</h3>
+      <%= render @drivings%>
+    </div>
   </div>
 </div>

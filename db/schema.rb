@@ -36,7 +36,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_08_212840) do
   create_table "drivings", force: :cascade do |t|
     t.bigint "driver_id", null: false
     t.bigint "vehicle_id", null: false
-    t.datetime "data_inicial", default: "2024-09-12 18:24:54", null: false
+    t.datetime "data_inicial", default: "2024-09-12 19:30:22", null: false
     t.datetime "data_final"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -50,7 +50,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_08_212840) do
     t.string "endereco_entrega"
     t.string "status_pedido", default: "PENDENTE"
     t.string "codigo_rastreio"
-    t.datetime "data_fornecimento", default: "2024-09-12 18:24:53", null: false
+    t.datetime "data_fornecimento", default: "2024-09-12 19:30:22", null: false
     t.bigint "supplier_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -66,7 +66,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_08_212840) do
   create_table "transportings", force: :cascade do |t|
     t.string "origem"
     t.string "destino"
-    t.datetime "data_despache", default: "2024-09-12 18:24:54", null: false
+    t.datetime "data_despache", default: "2024-09-12 19:30:22", null: false
     t.datetime "data_entrega"
     t.bigint "order_id", null: false
     t.bigint "vehicle_id", null: false

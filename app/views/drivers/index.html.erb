@@ -50,11 +50,11 @@
                     <i class="bi bi-trash"></i>
                   <% end %>
                   <% if driver.situacao == "ATIVO"%>
-                    <%= link_to url_for(controller: :drivings, action: :unlink, id: driver.id, is_driver: true), class: "btn btn-sm btn-outline-info", data:{turbo_frame: "modal"}, title:"Vincular Veículo" do%>
+                    <%= link_to url_for(controller: :drivings, action: :unlink, id: driver.id, is_driver: true), class: "opcao", data:{turbo_frame: "modal"}, title:"Vincular Veículo" do%>
                       <span> Desvincular Veículo</span>
                     <% end%>
                   <% else %>
-                    <%= link_to url_for(controller: :drivings, action: :new, id: driver.id, is_driver: true), class: "btn btn-sm btn-outline-info", data:{turbo_frame: "modal"}, title:"Vincular Veículo" do%>
+                    <%= link_to url_for(controller: :drivings, action: :new, id: driver.id, is_driver: true), class: "opcao", data:{turbo_frame: "modal"}, title:"Vincular Veículo" do%>
                       <span> Vincular Veículo</span>
                     <% end%>
                   <% end%>
