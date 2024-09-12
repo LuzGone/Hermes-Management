@@ -37,32 +37,32 @@
 }
 
 .btn-outline-info {
-  color:#173F3F; 
+  color:#0A2337; 
 }
 
 .btn-group .btn {
   margin-right: 5px; 
 }
 .btn-adicionar-pedido {
-    background-color: #173F3F; 
+    background-color: #F85800; 
     color: #ffffff; 
     border: none; 
     box-shadow: none; 
   }
   .btn-outline-info:hover {
-    background-color: #173F3F; 
+    background-color: #F85800; 
     color: #ffffff; 
   }
   
   .btn-adicionar-pedido {
-    background-color: #173F3F; 
+    background-color:#F85800;
     color: #ffffff; 
     border: none; 
     box-shadow: none;
   }
   
   .btn-adicionar-pedido:hover {
-    background-color: #173F3F; 
+    background-color: #FC8D00; 
     color: #ffffff;
     border: none; 
     box-shadow: none; 
@@ -75,17 +75,25 @@
 }
 
 .pag .page-item.active .page-link {
-  background-color: #173F3F; 
-  border-color: #173F3F; 
+  background-color: #F85800; 
+  border-color: #F85800; 
 }
 
 .pag .page-item .page-link {
-  color: #173F3F; 
-  border-color: #173F3F; 
+  color:#0A2337;
+  border-color: #F85800; 
 }
 
 .pag .page-item .page-link:hover {
-  background-color: #173F3F; 
+  background-color: #F85800; 
   color: #ffffff; 
-  border-color: #173F3F; 
+  border-color: #F85800; 
 }
+.titulo {
+  color: #0A2337;
+  font-family: 'Monteserrat', sans-serif; /* Fonte mais moderna e limpa */
+  font-weight: 600; /* Peso médio para um visual elegante */
+  letter-spacing: 0.5px; /* Leve espaçamento entre as letras */
+  text-align: center; /* Centralizar o título */
+}
+
