@@ -2,40 +2,46 @@
 
 <div class="main-content flex-grow-1 p-3">
   <div class="d-flex justify-content-between align-items-center mb-4">
-    <h2 class="text-primary">Pedido <%= @order.codigo_rastreio%></h2>
+    <h2 class="titulo">Pedido <%= @order.codigo_rastreio %></h2>
   </div>
+
   <div class="container-fluid">
-    <div class="container">
-      <h4>Danfe</h4>
-      <%= @order.danfe%>
+    <div class="card p-4 shadow-sm mb-4">
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <h4 class="info-titulo">Danfe</h4>
+          <p class="info-conteudo"><%= @order.danfe %></p>
+        </div>
+        <div class="col-md-6 mb-3">
+          <h4 class="info-titulo">NFe</h4>
+          <p class="info-conteudo"><%= @order.nfe %></p>
+        </div>
+        <div class="col-md-6 mb-3">
+          <h4 class="info-titulo">Endereço de Entrega</h4>
+          <p class="info-conteudo"><%= @order.endereco_entrega %></p>
+        </div>
+        <div class="col-md-6 mb-3">
+          <h4 class="info-titulo">Status do Pedido</h4>
+          <p class="info-conteudo"><%= @order.status_pedido %></p>
+        </div>
+        <div class="col-md-6 mb-3">
+          <h4 class="info-titulo">Código de Rastreio</h4>
+          <p class="info-conteudo"><%= @order.codigo_rastreio %></p>
+        </div>
+        <div class="col-md-6 mb-3">
+          <h4 class="info-titulo">Data de Fornecimento</h4>
+          <p class="info-conteudo"><%= @order.data_fornecimento %></p>
+        </div>
+        <div class="col-md-6 mb-3">
+          <h4 class="info-titulo">Fornecedor</h4>
+          <p class="info-conteudo"><%= Supplier.find(@order.supplier_id).nome %></p>
+        </div>
+      </div>
     </div>
-    <div class="container">
-      <h4>NFe</h4>
-      <%= @order.nfe%>
+
+    <div class="card p-4 shadow-sm mt-5">
+      <h3 class="titulo">Histórico do Pedido</h3>
+      <%= render @transportings %>
     </div>
-    <div class="container">
-      <h4>Endereço de Entrega</h4>
-      <%= @order.endereco_entrega%>
-    </div>
-    <div class="container">
-      <h4>Status do Pedido</h4>
-      <%= @order.status_pedido%>
-    </div>
-    <div class="container">
-      <h4> Código de Rastreio</h4>
-      <%= @order.codigo_rastreio%>
-    </div>
-    <div class="container">
-      <h4>Data de Fornecimento</h4>
-      <%= @order.data_fornecimento%>
-    </div>
-    <div class="container">
-      <h4> Fornecedor</h4>
-      <%= Supplier.find(@order.supplier_id).nome%>
-    </div>
-  </div>
-  <div>
-    <h3>Histórico do Pedido</h3>
-    <%= render @transportings%>
   </div>
 </div>

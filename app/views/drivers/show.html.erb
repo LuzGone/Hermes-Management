@@ -2,37 +2,42 @@
 
 <div class="main-content flex-grow-1 p-3">
   <div class="d-flex justify-content-between align-items-center mb-4">
-    <h2 class="text-primary">Motorista -  <%= @driver.nome%></h2>
+    <h2 class="titulo">Motorista -  <%= @driver.nome%></h2>
   </div>
   <div class="container-fluid">
-    <div class="container">
-      <h4>Nome</h4>
-      <%= @driver.nome%>
-    </div>
-    <div class="container">
-      <h4>Matrícula</h4>
-      <%= @driver.matricula%>
-    </div>
-    <div class="container">
-      <h4>Endereço</h4>
-      <%= @driver.endereco%>
-    </div>
-    <div class="container">
-      <h4>Telefone</h4>
-      <%= @driver.telefone%>
-    </div>
-    <div class="container">
-      <h4>situacao</h4>
-      <%= @driver.situacao%>
-    </div>
-    <div class="container">
-      <h4>Login</h4>
-      <%= @driver.login%>
+  <div class="card p-4 shadow-sm mb-4">
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <h4  class="info-titulo">Nome</h4>
+        <p class="info-conteudo"><%= @driver.nome%></p>
+      </div>
+      <div class="col-md-6 mb-3">
+        <h4  class="info-titulo">Matrícula</h4>
+        <p class="info-conteudo"><%=@driver.matricula%></p>
+      </div>
+      
+      <div class="col-md-6 mb-3">
+        <h4  class="info-titulo">Endereço</h4>
+        <p class="info-conteudo"><%=@driver.endereco%></p>
+      </div>
+      <div class="col-md-6 mb-3">
+        <h4  class="info-titulo">Telefone</h4>
+        <p class="info-conteudo"><%=@driver.telefone%></p>
+      </div>
+      <div class="col-md-6 mb-3">
+        <h4  class="info-titulo">Situacao</h4>
+        <p class="info-conteudo"><%=@driver.situacao%></p>
+      </div>
+      <div class="col-md-6 mb-3">
+        <h4  class="info-titulo">Login</h4>
+        <p class="info-conteudo"><%=@driver.login%></p>
+      </div>
     </div>
   </div>
 
-  <div>
-    <h3>Histórico de Veículos do Motorista</h3>
+  <div class="card p-4 shadow-sm mt-5">
+    <h3 class="titulo">Histórico de Veículos do Motorista</h3>
     <%= render @drivings%>
   </div>
+</div>
 </div>

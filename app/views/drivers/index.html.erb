@@ -1,7 +1,7 @@
 <%= render partial: "/layouts/navbar" %>
 <div class="main-content flex-grow-1 p-3">
   <div class="d-flex justify-content-between align-items-center mb-4">
-    <h2 class="text-primary">Motoristas</h2>
+    <h2 class="titulo">Motoristas</h2>
     <%= link_to "Adicionar Motorista", new_driver_path, data:{turbo_frame: "modal"}, class: "btn btn-adicionar-pedido" %>
   </div>
 
@@ -50,11 +50,11 @@
                     <i class="bi bi-trash"></i>
                   <% end %>
                   <% if driver.situacao == "ATIVO"%>
-                    <%= link_to url_for(controller: :drivings, action: :unlink, id: driver.id, is_driver: true), class: "btn btn-sm btn-outline-info", data:{turbo_frame: "modal"}, title:"Vincular Veículo" do%>
+                    <%= link_to url_for(controller: :drivings, action: :unlink, id: driver.id, is_driver: true), class: "opcao", data:{turbo_frame: "modal"}, title:"Vincular Veículo" do%>
                       <span> Desvincular Veículo</span>
                     <% end%>
                   <% else %>
-                    <%= link_to url_for(controller: :drivings, action: :new, id: driver.id, is_driver: true), class: "btn btn-sm btn-outline-info", data:{turbo_frame: "modal"}, title:"Vincular Veículo" do%>
+                    <%= link_to url_for(controller: :drivings, action: :new, id: driver.id, is_driver: true), class: "opcao", data:{turbo_frame: "modal"}, title:"Vincular Veículo" do%>
                       <span> Vincular Veículo</span>
                     <% end%>
                   <% end%>
