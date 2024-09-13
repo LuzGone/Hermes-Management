@@ -20,13 +20,15 @@
   </p>
 
   <p>
-    <strong>Datadespache:</strong>
-    <%= transporting.data_despache %>
+    <strong>Data de despache:</strong>
+    <%= l transporting.data_despache.in_time_zone('Brasilia') %>
   </p>
 
   <p>
-    <strong>Dataentrega:</strong>
-    <%= transporting.data_entrega %>
+    <strong>Data de entrega:</strong>
+    <%if transporting.data_entrega%>
+      <%= l transporting.data_entrega.in_time_zone('Brasilia') %>
+    <% end %>
   </p>
 
 </div>

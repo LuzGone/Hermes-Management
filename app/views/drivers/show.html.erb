@@ -37,7 +37,12 @@
 
   <div class="card p-4 shadow-sm mt-5">
     <h3 class="titulo">Histórico de Veículos do Motorista</h3>
-    <%= render @drivings%>
+    <% @drivings.each do |driving|%>
+        <div>
+          <%= render driving%>
+          <hr>
+        </div>
+      <%end%>
   </div>
 </div>
 </div>

@@ -10,13 +10,15 @@
   </p>
 
   <p>
-    <strong>Data Inicial:</strong>
-    <%= driving.data_inicial %>
+    <strong>Data Inicial da Utilização do Veículo:</strong>
+    <%= l driving.data_inicial.in_time_zone('Brasilia') %>
   </p>
 
   <p>
-    <strong>Data Final:</strong>
-    <%= driving.data_final %>
+    <strong>Data Final da Utilização do Veículo:</strong>
+    <%if driving.data_final%>
+      <%= l driving.data_final.in_time_zone('Brasilia') %>
+    <%end%>
   </p>
 
 </div>

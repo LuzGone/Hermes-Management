@@ -41,7 +41,12 @@
 
     <div class="card p-4 shadow-sm mt-5">
       <h3 class="titulo">Histórico do Pedido</h3>
-      <%= render @transportings %>
+      <% @transportings.each do |transporting|%>
+        <div>
+          <%= render transporting%>
+          <hr>
+        </div>
+      <%end%>
     </div>
   </div>
 </div>
