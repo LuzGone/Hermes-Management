@@ -118,6 +118,9 @@ GEM
     google-protobuf (4.28.1-x64-mingw-ucrt)
       bigdecimal
       rake (>= 13)
+    google-protobuf (4.28.1-x86_64-linux)
+      bigdecimal
+      rake (>= 13)
     i18n (1.14.5)
       concurrent-ruby (~> 1.0)
     importmap-rails (2.0.1)
@@ -158,7 +161,10 @@ GEM
     nio4r (2.7.3)
     nokogiri (1.16.7-x64-mingw-ucrt)
       racc (~> 1.4)
+    nokogiri (1.16.7-x86_64-linux)
+      racc (~> 1.4)
     pagy (9.0.9)
+    pg (1.5.8)
     pg (1.5.8-x64-mingw-ucrt)
     popper_js (2.11.8)
     psych (5.1.2)
@@ -218,6 +224,8 @@ GEM
     rubyzip (2.3.2)
     sass-embedded (1.78.0-x64-mingw-ucrt)
       google-protobuf (~> 4.27)
+    sass-embedded (1.78.0-x86_64-linux-gnu)
+      google-protobuf (~> 4.27)
     sassc-embedded (1.78.0)
       sass-embedded (~> 1.78)
     selenium-webdriver (4.24.0)
@@ -263,6 +271,7 @@ GEM
 
 PLATFORMS
   x64-mingw-ucrt
+  x86_64-linux
 
 DEPENDENCIES
   bootsnap
