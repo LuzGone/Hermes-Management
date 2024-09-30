@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
 
   # GET /orders or /orders.json
   def index
-    @pagy, @orders = pagy(Order.all, limit: 10)
+    @pagy, @orders = pagy(Order.order(created_at: :asc), limit: 10)
     @suppliers = Supplier.all
   end
 

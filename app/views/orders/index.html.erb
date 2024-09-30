@@ -3,7 +3,11 @@
 <div class="main-content flex-grow-1 p-3">
   <div class="d-flex justify-content-between align-items-center mb-4">
     <h2 class="titulo">Pedidos</h2>
-    <%= link_to "Adicionar Pedido", url_for(controller: :orders, action: :new), data:{turbo_frame: "modal"}, class: "btn btn-adicionar-pedido"%>
+    <div>
+      <%= link_to "Adicionar Pedido", url_for(controller: :orders, action: :new), data:{turbo_frame: "modal"}, class: "btn btn-adicionar-pedido"%>
+      <%= link_to "Cadastrar Vários Pedidos",url_for(controller: :orders, action: :index), class: "btn btn-adicionar-pedido"%>
+      <%= link_to "Atribuir Vários Pedidos",url_for(controller: :orders, action: :index), class: "btn btn-adicionar-pedido"%>
+    </div>
   </div>
 
   <div class="container-fluid">
@@ -25,7 +29,11 @@
         <tbody>
           <% @orders.each_with_index do |order, index| %>
             <tr>
-              <th scope="row"><%= index + 1 %></th>
+              <th scope="row">
+                <div class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input">
+                </div>
+              </th>
               <td><%= order.danfe %></td>
               <td><%= order.nfe %></td>
               <td><%= order.codigo_rastreio %></td>

@@ -3,7 +3,7 @@ class VehiclesController < ApplicationController
 
   # GET /vehicles or /vehicles.json
   def index
-    @pagy, @vehicles = pagy(Vehicle.all, limit: 10)
+    @pagy, @vehicles = pagy(Vehicle.order(created_at: :asc), limit: 10)
   end
 
   # GET /vehicles/1 or /vehicles/1.json

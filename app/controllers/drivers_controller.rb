@@ -3,7 +3,7 @@ class DriversController < ApplicationController
 
   # GET /drivers or /drivers.json
   def index
-    @pagy, @drivers = pagy(Driver.all, limit: 10)
+    @pagy, @drivers = pagy(Driver.order(created_at: :asc), limit: 10)
   end
 
   # GET /drivers/1 or /drivers/1.json

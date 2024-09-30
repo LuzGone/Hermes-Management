@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   # GET /users or /users.json
   def index
-    @pagy, @users = pagy(User.all, limit: 10)
+    @pagy, @users = pagy(User.order(created_at: :asc), limit: 10)
   end
 
   # GET /users/1 or /users/1.json
