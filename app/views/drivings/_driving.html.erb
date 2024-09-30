@@ -1,23 +1,28 @@
 <div id="<%= dom_id driving %>">
   <p>
-    <strong>Driver:</strong>
-    <%= driving.driver_id %>
+    <strong>Matricula do Motorista:</strong>
+    <%= driving.driver.matricula %>
   </p>
 
   <p>
-    <strong>Vehicle:</strong>
-    <%= driving.vehicle_id %>
+    <strong>Nome do Motorista:</strong>
+    <%= driving.driver.nome %>
+  </p>
+
+  <p>
+    <strong>Placa do Veículo:</strong>
+    <%= driving.vehicle.placa %>
   </p>
 
   <p>
     <strong>Data Inicial da Utilização do Veículo:</strong>
-    <%= l driving.data_inicial.in_time_zone('Brasilia') %>
+    <%= dataTempo(driving.data_inicial) %>
   </p>
 
   <p>
     <strong>Data Final da Utilização do Veículo:</strong>
     <%if driving.data_final%>
-      <%= l driving.data_final.in_time_zone('Brasilia') %>
+      <%= dataTempo(driving.data_final) %>
     <%end%>
   </p>
 

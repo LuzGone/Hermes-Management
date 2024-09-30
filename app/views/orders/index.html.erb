@@ -41,7 +41,7 @@
                 </span>
               </td>
               <td><%= @suppliers.find(order.supplier_id).nome %></td>
-              <td><%= order.data_fornecimento%></td>
+              <td><%= apenasData(order.data_fornecimento) %></td>
              <td class="text-center">
               <div class="btn-group">
                 <%= link_to edit_order_path(order), data:{turbo_frame: "modal"}, class: "btn btn-sm btn-outline-info", title: "Editar" do %>

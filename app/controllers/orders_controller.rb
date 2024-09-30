@@ -131,6 +131,6 @@ class OrdersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def order_params
-      params.require(:order).permit(:danfe, :nfe, :codigo_rastreio, :endereco_entrega, :status_pedido, :supplier_id)
+      params.require(:order).permit(:danfe, :nfe, :codigo_rastreio, :endereco_entrega, :status_pedido, :supplier_id,:data_fornecimento)
     end
 end
