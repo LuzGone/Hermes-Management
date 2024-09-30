@@ -26,7 +26,7 @@ class DrivingsController < ApplicationController
     elsif params[:is_driver]
       @driving = Driving.where(driver_id: params[:id]).last
     end
-    @driving.update(data_final: Time.now)
+    @driving.update(data_final: Time.now.in_time_zone('America/Sao_Paulo'))
     @driving.driver.update(situacao: "INATIVO")
     @driving.vehicle.update(situacao: "INATIVO")
 
@@ -50,7 +50,7 @@ class DrivingsController < ApplicationController
   # POST /drivings or /drivings.json
   def create
     @driving = Driving.new(driving_params)
-    @driving.data_inicial = Time.now
+    @driving.data_inicial = Time.now.in_time_zone('America/Sao_Paulo')
 
     respond_to do |format|
       if @driving.save
@@ -69,7 +69,7 @@ class DrivingsController < ApplicationController
   def update
     respond_to do |format|
       if @driving.update(driving_params)
-        @driving.update(data_final: Time.now)
+        @driving.update(data_final: Time.now.in_time_zone('America/Sao_Paulo'))
         @driving.driver.update(situacao: "INATIVO")
         @driving.vehicle.update(situacao: "INATIVO")
         format.html { redirect_to driving_url(@driving), notice: "Driving was successfully updated." }

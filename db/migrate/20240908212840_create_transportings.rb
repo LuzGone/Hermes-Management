@@ -4,7 +4,7 @@ class CreateTransportings < ActiveRecord::Migration[7.1]
       t.string :origem
       t.string :destino
       
-      t.datetime :data_despache, null:false, default: Time.now
+      t.datetime :data_despache, null:false, default: Time.now.in_time_zone('America/Sao_Paulo')
       t.datetime :data_entrega
 
       t.references :order, null: false, foreign_key: true

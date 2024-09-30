@@ -24,13 +24,13 @@ class TransportingsController < ApplicationController
   # POST /transportings or /transportings.json
   def create
     @transporting = Transporting.new(transporting_params)
-    @transporting.data_despache = Time.now
+    @transporting.data_despache = Time.now.in_time_zone('America/Sao_Paulo')
     @last_transporting = Transporting.where(order_id: @transporting.order.id).last
     
     respond_to do |format|
       if @transporting.save
         if @last_transporting 
-          @last_transporting.update(data_entrega: Time.now)
+          @last_transporting.update(data_entrega: Time.now.in_time_zone('America/Sao_Paulo'))
         else
           @transporting.order.update(status_pedido: "A CAMINHO")
         end

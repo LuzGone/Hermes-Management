@@ -42,7 +42,7 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @order.update(status_pedido: "ENTREGUE")
     @transporting = Transporting.where(order_id: @order.id).last
-    @transporting.update(data_entrega: Time.now)
+    @transporting.update(data_entrega: Time.now.in_time_zone('America/Sao_Paulo'))
     atualizar_redis(@order)
 
     flash[:notice] = "Pedido Atualizado com Sucesso"
