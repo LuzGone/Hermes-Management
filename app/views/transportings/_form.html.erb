@@ -32,7 +32,11 @@
 
   <div>
     <%= form.label :vehicle_id,"Placa do Veículo", class: "form-label" %>
-    <%= collection_select(:transporting, :vehicle_id, Vehicle.where(situacao:"ATIVO"), :id, :placa , options = {}, html_options = {class: "form-select"}) %>
+    <%if @last_transporting%>
+      <%= collection_select(:transporting, :vehicle_id, Vehicle.where(situacao:"ATIVO").where.not(id: @last_transporting.vehicle.id), :id, :placa , options = {}, html_options = {class: "form-select"}) %>
+    <%else%>
+      <%= collection_select(:transporting, :vehicle_id, Vehicle.where(situacao:"ATIVO"), :id, :placa , options = {}, html_options = {class: "form-select"}) %>
+    <%end%>
   </div>
 
   <div>

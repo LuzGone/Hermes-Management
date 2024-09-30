@@ -14,6 +14,7 @@ class TransportingsController < ApplicationController
   def new
     @transporting = Transporting.new
     @order = Order.find(params[:id])
+    @last_transporting = Transporting.where(order_id: @order.id).last
   end
 
   # GET /transportings/1/edit
