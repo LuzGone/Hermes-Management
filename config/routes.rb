@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :drivers
-  devise_for :users
+  devise_for :drivers, controllers:{
+    sessions: 'drivers/sessions'
+  }
+  devise_for :users, controllers:{
+    sessions: 'users/sessions'
+  }
   resources :suppliers
   resources :transportings
   resources :drivings
