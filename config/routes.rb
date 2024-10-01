@@ -34,4 +34,6 @@ Rails.application.routes.draw do
 
   get '/driver/:id/vehicles_history', to:'drivers#vehicles_history'
 
+  get '/driver/profile', to:'drivers#profile'
+
 end

@@ -1,0 +1,52 @@
+<%= render partial: "/layouts/navbar" %>
+
+<div class="main-content flex-grow-1 p-3">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+      <h2 class="titulo">Perfil</h2>
+  </div>
+  <div class="container-fluid">
+  <div class="card p-4 shadow-sm mb-4">
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <h4  class="info-titulo">Nome</h4>
+        <p class="info-conteudo"><%= @driver.nome%></p>
+      </div>
+      <div class="col-md-6 mb-3">
+        <h4  class="info-titulo">Matrícula</h4>
+        <p class="info-conteudo"><%=@driver.matricula%></p>
+      </div>
+      
+      <div class="col-md-6 mb-3">
+        <h4  class="info-titulo">Endereço</h4>
+        <p class="info-conteudo"><%=@driver.endereco%></p>
+      </div>
+      <div class="col-md-6 mb-3">
+        <h4  class="info-titulo">Telefone</h4>
+        <p class="info-conteudo"><%=@driver.telefone%></p>
+      </div>
+      <div class="col-md-6 mb-3">
+        <h4  class="info-titulo">Situacao</h4>
+        <p class="info-conteudo"><%=@driver.situacao%></p>
+      </div>
+      <div class="col-md-6 mb-3">
+        <h4  class="info-titulo">Email</h4>
+        <p class="info-conteudo"><%=@driver.email%></p>
+      </div>
+    </div>
+  </div>
+    <div class="container text-center">
+      <div class="row">
+        <div class="col">
+          <%= link_to driver_path(current_driver.id), class: "nav-link d-flex align-items-center" do%>
+              <i class="bi bi-person-badge me-2"></i>Histórico de Pedidos
+          <%end%>
+        </div>
+        <div class="col">
+          <%= link_to driver_path(current_driver.id), class: "nav-link d-flex align-items-center" do%>
+              <i class="bi bi-person-badge me-2"></i>Histórico de Veículos
+          <%end%>
+        </div>
+      </div>
+    </div>
+</div>
+</div>

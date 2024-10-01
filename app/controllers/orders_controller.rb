@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, only: [:index, :show, :new, :edit, :update, :destroy, :create]
   # GET /orders or /orders.json
   def index
     @pagy, @orders = pagy(Order.order(created_at: :asc), limit: 10)

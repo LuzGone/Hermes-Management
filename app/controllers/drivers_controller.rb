@@ -1,5 +1,7 @@
 class DriversController < ApplicationController
   before_action :set_driver, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, only: [:index, :show, :new, :edit, :update, :destroy, :create]
+  before_action :authenticate_driver!, only: [:profile, :orders,:orders_history,:vehicles_history]
 
   # GET /drivers or /drivers.json
   def index
@@ -79,6 +81,12 @@ class DriversController < ApplicationController
   end
 
   #Paginas do Motorista
+
+  # GET /driver/1/profile
+  def profile
+    @driver = current_driver
+  end
+
   # GET /driver/1/orders
   def orders
     if @driving = Driving.where(driver_id: current_driver.id).last

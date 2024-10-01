@@ -1,5 +1,6 @@
 class VehiclesController < ApplicationController
   before_action :set_vehicle, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, only: [:index, :show, :new, :edit, :update, :destroy, :create]
 
   # GET /vehicles or /vehicles.json
   def index
