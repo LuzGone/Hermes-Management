@@ -45,7 +45,11 @@
                   <%= button_to vehicle, method: :delete, class: "btn btn-sm btn-outline-danger", data: { "turbo-method": :delete, 'turbo-confirm': "Você tem Certeza?" }, title: "Deletar" do %>
                     <i class="bi bi-trash"></i>
                   <% end %>
-                  <%= link_to "Atribuir Motorista", url_for(controller: :drivings, action: :new, id: vehicle.id, is_vehicle: true), class: "opcao", data:{turbo_frame: "modal"}%>
+                  <% if vehicle.situacao == "ATIVO"%>
+                    <%= link_to "Desvincular Motorista", url_for(controller: :drivings, action: :unlink, id: vehicle.id, is_vehicle: true), class: "opcao", data:{turbo_frame: "modal"}%>
+                  <% else %>
+                    <%= link_to "Atribuir Motorista", url_for(controller: :drivings, action: :new, id: vehicle.id, is_vehicle: true), class: "opcao", data:{turbo_frame: "modal"}%>
+                  <% end%>
                 </div>
               </td>
             </tr>

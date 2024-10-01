@@ -40,13 +40,16 @@ class OrdersController < ApplicationController
 
   def mark_as_delivered
     @order = Order.find(params[:id])
-    @order.update(status_pedido: "ENTREGUE")
-    @transporting = Transporting.where(order_id: @order.id).last
-    @transporting.update(data_entrega: Time.now.in_time_zone('America/Sao_Paulo'))
+    @last_transporting = Transporting.where(order_id: @order.id).last
+    @last_transporting.update(data_entrega: Time.now.in_time_zone('America/Sao_Paulo'))
+    if @last_transporting.destino === @order.endereco_entrega
+      @order.update(status_pedido: "ENTREGUE")
+    else
+      @order.update(status_pedido: "EM ESPERA")
+    end
     atualizar_redis(@order)
-
     flash[:notice] = "Pedido Atualizado com Sucesso"
-    @pagy, @orders = pagy(Order.all, limit: 10)
+    @pagy, @orders = pagy(Order.order(created_at: :asc), limit: 10)
     @suppliers = Supplier.all
     render :index
   end

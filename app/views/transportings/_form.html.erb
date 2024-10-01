@@ -10,13 +10,25 @@
   <% end %>
 
   <div>
-    <%= form.label :origem, class: "form-label" %>
-    <%= form.text_field :origem, class:"form-control"%>
+    <%if @order.status_pedido === "EM ESPERA"%>
+      <%= form.label :origem, class: "form-label" %>
+      <div class="form-control"> <%= @last_transporting.destino%> </div>
+      <%= form.text_field :origem, class:"form-control", value: @last_transporting.destino, hidden: true %>
+    <%else%>
+      <%= form.label :origem, class: "form-label" %>
+      <%= form.text_field :origem, class:"form-control"%>
+    <%end%>
   </div>
 
   <div>
-    <%= form.label :destino, class: "form-label" %>
-    <%= form.text_field :destino, class:"form-control"%>
+    <%if transporting.destino%>
+      <%= form.label :destino, class: "form-label" %>
+      <div class="form-control"> <%= transporting.destino%> </div>
+      <%= form.text_field :destino, class:"form-control", value: transporting.destino, hidden: true %>
+    <%else%>
+      <%= form.label :destino, class: "form-label" %>
+      <%= form.text_field :destino, class:"form-control"%>
+    <%end%>
   </div>
 
   <div>

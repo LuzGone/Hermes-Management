@@ -81,6 +81,9 @@ class DriversController < ApplicationController
   #Paginas do Motorista
   # GET /driver/1/orders
   def orders
+    if @driving = Driving.where(driver_id: current_driver.id).last 
+      @transportings = Transporting.where(vehicle_id: @driving.vehicle.id) 
+    end
   end
 
   # GET /driver/1/orders_history
