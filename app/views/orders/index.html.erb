@@ -29,11 +29,7 @@
         <tbody>
           <% @orders.each_with_index do |order, index| %>
             <tr>
-              <th scope="row">
-                <div class="custom-control custom-checkbox">
-                  <input type="checkbox" class="custom-control-input">
-                </div>
-              </th>
+              <th scope="row"><%= index+1 %></th>
               <td><%= order.danfe %></td>
               <td><%= order.nfe %></td>
               <td><%= order.codigo_rastreio %></td>

@@ -6,36 +6,49 @@
       <span class="fs-4">Hermes</span>
     </div>
     <ul class="nav flex-column">
-      <li class="nav-item">
-        <a class="nav-link  d-flex align-items-center" href="/">
-          <i class="bi bi-house-door me-2"></i>Home
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link  d-flex align-items-center" href="/orders">
-          <i class="bi bi-bag me-2"></i>Pedidos
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link d-flex align-items-center" href="/drivers">
-          <i class="bi bi-person-badge me-2"></i>Motoristas
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link d-flex align-items-center" href="/vehicles">
-          <i class="bi bi-truck me-2"></i>Veículos
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link d-flex align-items-center" href="/users">
-          <i class="bi bi-people me-2"></i>Usuários
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link d-flex align-items-center" href="/suppliers">
-          <i class="bi bi-cart me-2"></i>Fornecedores
-        </a>
-      </li>
+      <%if user_signed_in? %>
+        <li class="nav-item">
+          <a class="nav-link  d-flex align-items-center" href="/">
+            <i class="bi bi-house-door me-2"></i>Home
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link  d-flex align-items-center" href="/orders">
+            <i class="bi bi-bag me-2"></i>Pedidos
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link d-flex align-items-center" href="/drivers">
+            <i class="bi bi-person-badge me-2"></i>Motoristas
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link d-flex align-items-center" href="/vehicles">
+            <i class="bi bi-truck me-2"></i>Veículos
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link d-flex align-items-center" href="/users">
+            <i class="bi bi-people me-2"></i>Usuários
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link d-flex align-items-center" href="/suppliers">
+            <i class="bi bi-cart me-2"></i>Fornecedores
+          </a>
+        </li>
+        <li class="nav-item">
+            <%= button_to destroy_user_session_path, method: :delete, class: "nav-link d-flex align-items-center" do%>
+              <i class="bi bi-box-arrow-left me-2"></i>Sair
+            <%end%>
+        </li>
+      <%else%>
+        <li class="nav-item">
+            <%= link_to new_user_session_path(), class: "nav-link d-flex align-items-center" do%>
+              <i class="bi bi-box-arrow-in-right me-2"></i>Login
+            <%end%>
+        </li>
+      <%end%>
     </ul>
   </div>
   <!-- Main content 

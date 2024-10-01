@@ -1,10 +1,10 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: %i[ show edit update destroy ]
-
   # GET /orders or /orders.json
   def index
     @pagy, @orders = pagy(Order.order(created_at: :asc), limit: 10)
     @suppliers = Supplier.all
+    @selected_orders = []
   end
 
   # GET /orders/1 or /orders/1.json

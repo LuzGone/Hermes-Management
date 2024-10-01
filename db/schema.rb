@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_09_08_212840) do
+ActiveRecord::Schema[7.1].define(version: 2024_09_30_221907) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -36,7 +36,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_08_212840) do
   create_table "drivings", force: :cascade do |t|
     t.bigint "driver_id", null: false
     t.bigint "vehicle_id", null: false
-    t.datetime "data_inicial", default: "2024-09-30 17:50:26", null: false
+    t.datetime "data_inicial", default: "2024-09-30 22:44:01", null: false
     t.datetime "data_final"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -50,7 +50,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_08_212840) do
     t.string "endereco_entrega"
     t.string "status_pedido", default: "PENDENTE"
     t.string "codigo_rastreio"
-    t.datetime "data_fornecimento", default: "2024-09-30 17:50:26", null: false
+    t.datetime "data_fornecimento", default: "2024-09-30 22:44:01", null: false
     t.bigint "supplier_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -66,7 +66,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_08_212840) do
   create_table "transportings", force: :cascade do |t|
     t.string "origem"
     t.string "destino"
-    t.datetime "data_despache", default: "2024-09-30 17:50:26", null: false
+    t.datetime "data_despache", default: "2024-09-30 22:44:01", null: false
     t.datetime "data_entrega"
     t.bigint "order_id", null: false
     t.bigint "vehicle_id", null: false
@@ -79,10 +79,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_08_212840) do
   create_table "users", force: :cascade do |t|
     t.string "nome"
     t.string "matricula"
-    t.string "login"
-    t.string "senha"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   create_table "vehicles", force: :cascade do |t|

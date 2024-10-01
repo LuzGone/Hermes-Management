@@ -74,7 +74,7 @@ listaDeDDD = [11, 12, 13, 14, 15, 16, 17, 18, 19 , 21, 22, 24 ,31, 32, 33, 34, 3
 for i in 1..20
     Driver.create!(
         nome: "Motorista #{i}",
-        matricula: "#{(rand(0.1..1)*10**11).to_i}",
+        matricula: "#{(rand(0.1..1)*10**12).to_i}",
         endereco: "Endereco Motorista #{i}",
         telefone: "(#{listaDeDDD.sample})9""#{(rand(0.1..1)*10**8).to_i}",
         situacao: "INATIVO",
@@ -94,9 +94,9 @@ end
 for i in 1..10
     User.create!(
         nome: "Usuario #{i}",
-        matricula: "#{(rand(0.1..1)*10**11).to_i}",
-        login: "usuario#{i}",
-        senha: "usuario#{i}"
+        matricula: "#{(rand(0.1..1)*10**10).to_i}",
+        email: "usuario#{i}@email.com",
+        password: "usuario#{i}"
     )
 end
 
