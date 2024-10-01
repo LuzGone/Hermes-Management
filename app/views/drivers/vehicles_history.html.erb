@@ -2,5 +2,13 @@
 <div class="main-content flex-grow-1 p-3">
     <h1>Histórico de Veículos</h1>
     <hr>
-    <%= current_driver.matricula%>
+    <div class="card p-4 shadow-sm mt-5">
+      <h3 class="titulo">Histórico de Veículos do Motorista</h3>
+      <% @drivings.each do |driving|%>
+          <div>
+            <%= render driving%>
+            <hr>
+          </div>
+        <%end%>
+    </div>
 </div>

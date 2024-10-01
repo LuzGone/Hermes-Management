@@ -81,17 +81,28 @@ class DriversController < ApplicationController
   #Paginas do Motorista
   # GET /driver/1/orders
   def orders
-    if @driving = Driving.where(driver_id: current_driver.id).last 
-      @transportings = Transporting.where(vehicle_id: @driving.vehicle.id) 
+    if @driving = Driving.where(driver_id: current_driver.id).last
+      vehicle_id = @driving.vehicle.id
+      @transportings = Transporting.where(vehicle_id: vehicle_id)
+      @last_orders = []
+      for transporting in @transportings
+        if transporting.order.transporting.last.vehicle_id == vehicle_id
+          @last_orders.push(transporting.order)
+        end
+      end
     end
   end
 
   # GET /driver/1/orders_history
   def orders_history
+    if @driving = Driving.where(driver_id: current_driver.id).last 
+      @transportings = Transporting.where(vehicle_id: @driving.vehicle.id) 
+    end
   end
 
   # GET /driver/1/vehicles_history
   def vehicles_history
+    @drivings = Driving.where(driver_id: current_driver.id)
   end
 
   private

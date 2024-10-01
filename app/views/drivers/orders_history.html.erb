@@ -1,6 +1,53 @@
 <%= render partial: "/layouts/navbar" %>
 <div class="main-content flex-grow-1 p-3">
-    <h1>Histórico de Pedidos</h1>
-    <hr>
-    <%= current_driver.matricula%>
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="titulo">Histórico de Entregas</h2>
+  </div>
+
+  <div class="container-fluid">
+    <div class="table-responsive shadow-sm p-4 mb-5 bg-white rounded">
+      <table class="table table-hover table-borderless align-middle orders-table">
+        <thead class="table-light">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Codigo de Rastreio</th>
+            <th scope="col">Endereço Origem</th>
+            <th scope="col">Endereço Destino</th>
+            <th scope="col">Status</th>
+            <th scope="col">Data de Despacho</th>
+            <th scope="col" class="text-center">Opções</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @transportings.each_with_index do |transporting, index| %>
+            <tr>
+              <th scope="row"><%= index+1 %></th>
+              <td><%= transporting.order.codigo_rastreio %></td>
+              <td><%= transporting.origem %></td>
+              <td><%= transporting.destino %></td>
+              <td>
+                <% badge_class = case transporting.order.status_pedido
+                  when 'ENTREGUE' then 'badge-recebido'
+                  when 'PENDENTE' then 'badge-pendente'
+                  when 'EM ESPERA' then 'badge-espera'
+                  else 'badge-defaut'
+                end %>
+                <span class="badge rounded-pill <%= badge_class %>">
+                  <%= transporting.order.status_pedido %>
+                </span>
+              </td>
+              <td><%= apenasData(transporting.data_despache) %></td>
+             <td class="text-center">
+              <div class="btn-group">
+                <%= link_to order_path(transporting.order), class: "btn btn-sm btn-outline-info", title: "Detalhar" do %>
+                  <i class="bi bi-search"></i>
+                <% end %>
+              </div>
+            </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
