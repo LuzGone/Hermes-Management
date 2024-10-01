@@ -49,24 +49,24 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link d-flex align-items-center" href="/drivers">
-            <i class="bi bi-person-badge me-2"></i>Perfil
-          </a>
+          <%= link_to driver_path(current_driver.id), class: "nav-link d-flex align-items-center" do%>
+              <i class="bi bi-person-badge me-2"></i>Perfil
+          <%end%>
         </li>
         <li class="nav-item">
-          <a class="nav-link  d-flex align-items-center" href="/orders">
-            <i class="bi bi-bag me-2"></i>Pedidos para Entregar
-          </a>
+          <%= link_to url_for(controller: :drivers, action: :orders, id: current_driver.id), class: "nav-link d-flex align-items-center" do%>
+                <i class="bi bi-bag me-2"></i>Pedidos para Entregar
+          <%end%>
         </li>
         <li class="nav-item">
-          <a class="nav-link d-flex align-items-center" href="/vehicles">
-            <i class="bi bi-truck me-2"></i>Histórico de Pedidos
-          </a>
+          <%= link_to url_for(controller: :drivers, action: :orders_history, id: current_driver.id), class: "nav-link d-flex align-items-center" do%>
+                <i class="bi bi-truck me-2"></i>Histórico de Pedidos
+          <%end%>
         </li>
         <li class="nav-item">
-          <a class="nav-link d-flex align-items-center" href="/vehicles">
-            <i class="bi bi-truck me-2"></i>Histórico de Veículos
-          </a>
+          <%= link_to url_for(controller: :drivers, action: :vehicles_history, id: current_driver.id), class: "nav-link d-flex align-items-center" do%>
+                <i class="bi bi-truck me-2"></i>Histórico de Veículos
+          <%end%>
         </li>
         <li class="nav-item">
             <%= button_to destroy_driver_session_path, method: :delete, class: "nav-link d-flex align-items-center" do%>

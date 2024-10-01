@@ -78,6 +78,19 @@ class DriversController < ApplicationController
     end
   end
 
+  #Paginas do Motorista
+  # GET /driver/1/orders
+  def orders
+  end
+
+  # GET /driver/1/orders_history
+  def orders_history
+  end
+
+  # GET /driver/1/vehicles_history
+  def vehicles_history
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_driver

@@ -28,4 +28,10 @@ Rails.application.routes.draw do
 
   get '/unlink/:id', to:'drivings#unlink'
 
+  get '/driver/:id/orders', to:'drivers#orders'
+
+  get '/driver/:id/orders_history', to:'drivers#orders_history'
+
+  get '/driver/:id/vehicles_history', to:'drivers#vehicles_history'
+
 end

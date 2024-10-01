@@ -1,1 +1,6 @@
 <%= render partial: "/layouts/navbar" %>
+<%if driver_signed_in?%>
+    <%= render partial: "/drivers/driver_home" %>
+<%elsif user_signed_in?%>
+    <%= render partial: "/users/user_home" %>
+<%end%>
