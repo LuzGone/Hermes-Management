@@ -78,8 +78,8 @@ for i in 1..20
         endereco: "Endereco Motorista #{i}",
         telefone: "(#{listaDeDDD.sample})9""#{(rand(0.1..1)*10**8).to_i}",
         situacao: "INATIVO",
-        login: "motorista#{i}",
-        senha: "motorista#{i}"
+        email: "motorista#{i}@email.com",
+        password: "motorista#{i}"
     )
 end
 
