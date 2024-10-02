@@ -13,9 +13,9 @@
     <%= form.label :driver_id, "Motorista", style: "display: block" %>
     <%if @driver %>
       <div class="form-control"> <%= @driver.nome%> </div>
-      <%= collection_select(:driving, :driver_id, Driver.all, :id, :nome , options = {selected: @driver.id}, html_options = {class: "form-select", hidden: "hidden"}) %>
+      <%= collection_select(:driving, :driver_id, Driver.where(situacao:"INATIVO"), :id, :nome , options = {selected: @driver.id}, html_options = {class: "form-select", hidden: "hidden"}) %>
     <%else%>
-      <%= collection_select(:driving, :driver_id, Driver.all, :id, :nome, options = {}, html_options = {class: "form-select"}) %>
+      <%= collection_select(:driving, :driver_id, Driver.where(situacao:"INATIVO"), :id, :nome, options = {}, html_options = {class: "form-select"}) %>
     <%end%>
   </div>
 
@@ -23,9 +23,9 @@
     <%= form.label :vehicle_id,"Placa do Veículo", style: "display: block" %>
     <%if @vehicle %>
       <div class="form-control"> <%= @vehicle.placa%> </div>
-      <%= collection_select(:driving, :vehicle_id, Vehicle.all, :id, :placa , options = {selected: @vehicle.id}, html_options = {class: "form-select", hidden:"hidden"}) %>
+      <%= collection_select(:driving, :vehicle_id, Vehicle.where(situacao:"INATIVO"), :id, :placa , options = {selected: @vehicle.id}, html_options = {class: "form-select", hidden:"hidden"}) %>
     <%else%>
-      <%= collection_select(:driving, :vehicle_id, Vehicle.all, :id, :placa , options = {}, html_options = {class: "form-select"}) %>
+      <%= collection_select(:driving, :vehicle_id, Vehicle.where(situacao:"INATIVO"), :id, :placa , options = {}, html_options = {class: "form-select"}) %>
     <%end%>
   </div>
   <div>
