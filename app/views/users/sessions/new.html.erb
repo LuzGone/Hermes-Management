@@ -1,26 +1,30 @@
-<h2>Log in de Usuário</h2>
+<%= render partial: "/layouts/navbar" %>
+<div class="flex-grow-1 p-3">
+<div class="container-fluid h-100">
+    <div class="row h-100">
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+        <div class="col-lg-6 d-flex align-items-center p-0 h-100">
+            <img src="https://images.pexels.com/photos/7464683/pexels-photo-7464683.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="House Image" class="img-fluid w-100 h-100" style="object-fit: cover;">
+        </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+        <div class="col-lg-6 d-flex align-items-center justify-content-center h-100">
+            <div class="login-form text-center">
+                <h2 class="welcome-text mb-4">Log in de Usuário</h2>
+                <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                  <div class="form-group">
+                    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control form-control-lg", placeholder:"E-mail"%>
+                  </div>
+                  <br/>
+                  <div class="form-group">
+                    <%= f.password_field :password, autocomplete: "current-password", class: "form-control form-control-lg", placeholder:"Senha" %>
+                  </div>
+                  <hr>
+                  <div class="actions">
+                    <%= f.submit "Entrar", class:"btn btn-primary w-100"%>
+                  </div>
+                <% end %>
+            </div>
+        </div>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
-
-<%= render "users/shared/links" %>
+</div>
+</div>
