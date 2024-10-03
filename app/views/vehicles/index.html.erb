@@ -51,9 +51,24 @@
                     <i class="bi bi-trash"></i>
                   <% end %>
                   <% if vehicle.situacao == "ATIVO"%>
-                    <%= link_to "Desvincular Motorista", url_for(controller: :drivings, action: :unlink, id: vehicle.id, is_vehicle: true), class: "opcao", data:{turbo_frame: "modal"}%>
+                    <%= form_with(url: unlink_drivings_path, method: :post) do |form| %>
+                      <%= form.hidden_field :id, value: vehicle.id %>
+                      <%= form.hidden_field :is_vehicle, value: true%>
+                      <button class="btn btn-sm btn-outline-info"><i class="bi bi-heartbreak"></i></button>
+                    <% end %>
+                    <%= form_with(url: in_route_vehicles_path, method: :post) do |form| %>
+                      <%= form.hidden_field :id, value: vehicle.id %>
+                      <button class="btn btn-sm btn-outline-info"><i class="bi bi-box-arrow-in-right"></i></button>
+                    <% end %>
+                  <% elsif vehicle.situacao == "EM ROTA"%>
+                    <%= form_with(url: exit_route_vehicles_path, method: :post) do |form| %>
+                      <%= form.hidden_field :id, value: vehicle.id %>
+                      <button class="btn btn-sm btn-outline-info"><i class="bi bi-box-arrow-right"></i></button>
+                    <% end %>
                   <% else %>
-                    <%= link_to "Atribuir Motorista", url_for(controller: :drivings, action: :new, id: vehicle.id, is_vehicle: true), class: "opcao", data:{turbo_frame: "modal"}%>
+                    <%= link_to url_for(controller: :drivings, action: :new, id: vehicle.id, is_vehicle: true), class: "btn btn-sm btn-outline-info", data:{turbo_frame: "modal"} do%>
+                      <i class="bi bi-link"></i>
+                    <%end%>
                   <% end%>
                 </div>
               </td>

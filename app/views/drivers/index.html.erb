@@ -55,12 +55,23 @@
                     <i class="bi bi-trash"></i>
                   <% end %>
                   <% if driver.situacao == "ATIVO"%>
-                    <%= link_to url_for(controller: :drivings, action: :unlink, id: driver.id, is_driver: true), class: "opcao", data:{turbo_frame: "modal"}, title:"Vincular Veículo" do%>
-                      <span> Desvincular Veículo</span>
-                    <% end%>
+                    <%= form_with(url: unlink_drivings_path, method: :post) do |form| %>
+                      <%= form.hidden_field :id, value: driver.id %>
+                      <%= form.hidden_field :is_driver, value: true%>
+                      <button class="btn btn-sm btn-outline-info"><i class="bi bi-heartbreak"></i></button>
+                    <% end %>
+                    <%= form_with(url: in_route_drivers_path, method: :post) do |form| %>
+                      <%= form.hidden_field :id, value: driver.id %>
+                      <button class="btn btn-sm btn-outline-info"><i class="bi bi-box-arrow-in-right"></i></button>
+                    <% end %>
+                  <% elsif driver.situacao == "EM ROTA"%>
+                    <%= form_with(url: exit_route_drivers_path, method: :post) do |form| %>
+                      <%= form.hidden_field :id, value: driver.id %>
+                      <button class="btn btn-sm btn-outline-info"><i class="bi bi-box-arrow-right"></i></button>
+                    <% end %>
                   <% else %>
-                    <%= link_to url_for(controller: :drivings, action: :new, id: driver.id, is_driver: true), class: "opcao", data:{turbo_frame: "modal"}, title:"Vincular Veículo" do%>
-                      <span> Vincular Veículo</span>
+                    <%= link_to url_for(controller: :drivings, action: :new, id: driver.id, is_driver: true), class: "btn btn-sm btn-outline-info", data:{turbo_frame: "modal"}, title:"Vincular Veículo" do%>
+                      <i class="bi bi-link"></i>
                     <% end%>
                   <% end%>
                 </div>

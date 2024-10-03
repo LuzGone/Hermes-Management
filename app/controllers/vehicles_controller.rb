@@ -24,8 +24,26 @@ class VehiclesController < ApplicationController
   end
 
   def unlink
-    
   end
+
+  def in_route
+    @driving = Driving.where(vehicle_id: params[:id]).last
+    @driver = @driving.driver
+    @vehicle = @driving.vehicle
+    @driver.update(situacao: "EM ROTA")
+    @vehicle.update(situacao: "EM ROTA")
+    redirect_to vehicles_path
+  end
+
+  def exit_route
+    @driving = Driving.where(vehicle_id: params[:id]).last
+    @driver = @driving.driver
+    @vehicle = @driving.vehicle
+    @driver.update(situacao: "ATIVO")
+    @vehicle.update(situacao: "ATIVO")
+    redirect_to vehicles_path
+  end
+  
 
   # POST /vehicles or /vehicles.json
   def create

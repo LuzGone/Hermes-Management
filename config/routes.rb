@@ -12,13 +12,24 @@ Rails.application.routes.draw do
   }
   resources :suppliers
   resources :transportings
-  resources :drivings
+  resources :drivings do
+    collection do
+      post :unlink
+    end
+  end
   resources :admins
   resources :users
-  resources :vehicles
+  resources :vehicles do
+    collection do
+      post :in_route
+      post :exit_route
+    end
+  end
   resources :drivers do
     collection do
       get :orders
+      post :in_route
+      post :exit_route
     end
   end
   resources :orders do

@@ -102,6 +102,34 @@ class DriversController < ApplicationController
     end
   end
 
+  #POST
+  def in_route
+    @driving = Driving.where(driver_id: params[:id]).last
+    @driver = @driving.driver
+    @vehicle = @driving.vehicle
+    @driver.update(situacao: "EM ROTA")
+    @vehicle.update(situacao: "EM ROTA")
+    if user_signed_in?
+      redirect_to drivers_path
+    elsif driver_signed_in?
+      redirect_to orders_drivers_path
+    end  
+  end
+
+  #POST
+  def exit_route
+    @driving = Driving.where(driver_id: params[:id]).last
+    @driver = @driving.driver
+    @vehicle = @driving.vehicle
+    @driver.update(situacao: "ATIVO")
+    @vehicle.update(situacao: "ATIVO")
+    if user_signed_in?
+      redirect_to drivers_path
+    elsif driver_signed_in?
+      redirect_to orders_drivers_path
+    end  
+  end
+
   # GET /driver/1/orders_history
   def orders_history
     @transportings = []

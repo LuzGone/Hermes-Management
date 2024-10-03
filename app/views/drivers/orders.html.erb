@@ -1,10 +1,21 @@
 <%= render partial: "/layouts/navbar" %>
 <div class="main-content flex-grow-1 p-3">
   <div class="d-flex justify-content-between align-items-center mb-4">
-    <h2 class="titulo">Entregas Realizadas</h2>
+    <h2 class="titulo">Entregas Para Realizar</h2>
   </div>
 
 <div class="container-fluid">
+    <% if current_driver.situacao == "ATIVO"%>
+      <%= form_with(url: in_route_drivers_path, method: :post) do |form| %>
+        <%= form.hidden_field :id, value: current_driver.id %>
+        <button class="btn btn-sm btn-info btn-outline-info">Iniciar Rota</button>
+      <% end %>
+    <% elsif current_driver.situacao == "EM ROTA"%>
+      <%= form_with(url: exit_route_drivers_path, method: :post) do |form| %>
+        <%= form.hidden_field :id, value: current_driver.id %>
+        <button class="btn btn-sm btn-info btn-outline-info">Finalizar Rota</i></button>
+      <% end %>
+    <% end%>
     <div class="table-responsive shadow-sm p-4 mb-5 bg-white rounded">
       <table class="table table-hover table-borderless align-middle orders-table">
         <thead class="table-light">
