@@ -3,9 +3,10 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:index, :show, :new, :edit, :update, :destroy, :create]
   # GET /orders or /orders.json
   def index
-    @pagy, @orders = pagy(Order.order(created_at: :asc), limit: 10)
+    @q = Order.ransack(params[:q])
+    # @orders = @q.result(distinct: true)
+    @pagy, @orders = pagy(@q.result.includes(:supplier), limit: 10)
     @suppliers = Supplier.all
-    @selected_orders = []
   end
 
   # GET /orders/1 or /orders/1.json
