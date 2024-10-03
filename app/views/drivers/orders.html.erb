@@ -40,13 +40,11 @@
                 <td><%= apenasData(order.transporting.last.data_despache) %></td>
                 <td class="text-center">
                 <div class="btn-group">
-                    <%= link_to order_path(order), class: "btn btn-sm btn-outline-info", title: "Detalhar" do %>
-                    <i class="bi bi-search"></i>
-                    <% end %>
                     <% if order.status_pedido == "A CAMINHO" %>
-                    <%= link_to url_for(controller: :orders, action: :mark_as_delivered, id: order.id), class: "btn btn-sm btn-outline-info", title: "Marcar como Entregue" do %>
-                    <i class="bi bi-check-lg"></i>
-                    <% end %>
+                      <%= form_with(url: mark_as_delivered_orders_path, method: :post) do |form| %>
+                        <%= form.hidden_field :id, value: order.id %>
+                        <button class="btn btn-sm btn-outline-info"><i class="bi bi-check-lg"></i></button>
+                      <% end %>
                     <% end %>
                 </div>
                 </td>

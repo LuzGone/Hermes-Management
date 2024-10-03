@@ -68,8 +68,9 @@
                   <% end %>
                 <% end %>
                 <% if order.status_pedido == "A CAMINHO" %>
-                  <%= link_to url_for(controller: :orders, action: :mark_as_delivered, id: order.id), class: "btn btn-sm btn-outline-info", title: "Marcar como Entregue" do %>
-                  <i class="bi bi-check-lg"></i>
+                  <%= form_with(url: mark_as_delivered_orders_path, method: :post) do |form| %>
+                      <%= form.hidden_field :id, value: order.id %>
+                      <button class="btn btn-sm btn-outline-info"><i class="bi bi-check-lg"></i></button>
                   <% end %>
                 <% end %>
                 <%= button_to order, method: :delete, class: "btn btn-sm btn-outline-danger", data: { "turbo-method": :delete, 'turbo-confirm': "Você tem Certeza?" }, title: "Deletar" do %>

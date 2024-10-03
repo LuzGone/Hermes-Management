@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   resources :orders do
     collection do
       post :import
+      post :mark_as_delivered
     end
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -37,7 +38,7 @@ Rails.application.routes.draw do
 
   get '/rastreio/:codigo_rastreio', to: 'orders#show_by_codigo_rastreio'
 
-  get '/mark_as_delivered/:id', to:'orders#mark_as_delivered'
+  post '/mark_as_delivered/:id', to:'orders#mark_as_delivered'
 
   get '/unlink/:id', to:'drivings#unlink'
 
