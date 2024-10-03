@@ -1,4 +1,9 @@
-Rails.application.routes.draw do
+require 'sidekiq/web'
+Rails.application.routes.draw do 
+  authenticate :user do
+    mount Sidekiq::Web => '/sidekiq'
+  end
+
   devise_for :drivers, controllers:{
     sessions: 'drivers/sessions'
   }
@@ -11,8 +16,16 @@ Rails.application.routes.draw do
   resources :admins
   resources :users
   resources :vehicles
-  resources :drivers
-  resources :orders
+  resources :drivers do
+    collection do
+      get :orders
+    end
+  end
+  resources :orders do
+    collection do
+      post :import
+    end
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -35,5 +48,7 @@ Rails.application.routes.draw do
   get '/driver/:id/vehicles_history', to:'drivers#vehicles_history'
 
   get '/driver/profile', to:'drivers#profile'
+
+  get '/order/import', to:'orders#csv_form'
 
 end

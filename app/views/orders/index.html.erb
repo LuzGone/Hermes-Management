@@ -5,8 +5,7 @@
     <h2 class="titulo">Pedidos</h2>
     <div>
       <%= link_to "Adicionar Pedido", url_for(controller: :orders, action: :new), data:{turbo_frame: "modal"}, class: "btn btn-adicionar-pedido"%>
-      <%= link_to "Cadastrar Vários Pedidos",url_for(controller: :orders, action: :index), class: "btn btn-adicionar-pedido"%>
-      <%= link_to "Atribuir Vários Pedidos",url_for(controller: :orders, action: :index), class: "btn btn-adicionar-pedido"%>
+      <%= link_to "Cadastrar Vários Pedidos",url_for(controller: :orders, action: :csv_form), data:{turbo_frame: "modal"}, class: "btn btn-adicionar-pedido"%>
     </div>
   </div>
 

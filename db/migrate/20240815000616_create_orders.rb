@@ -7,7 +7,7 @@ class CreateOrders < ActiveRecord::Migration[7.1]
       t.string :status_pedido, default: "PENDENTE"
       t.string :codigo_rastreio
       
-      t.datetime :data_fornecimento, null: false, default: Time.now.in_time_zone('America/Sao_Paulo')
+      t.datetime :data_fornecimento, null: false
       
       t.references :supplier, null: false, foreign_key: true
 
