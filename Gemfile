@@ -80,3 +80,5 @@ group :test do
 end
 
 gem "ransack", "~> 4.2"
+
+gem "sidekiq", "~> 7.3"

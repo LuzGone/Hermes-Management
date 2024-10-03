@@ -29,6 +29,10 @@
           <p class="info-conteudo"><%= @order.codigo_rastreio %></p>
         </div>
         <div class="col-md-6 mb-3">
+          <h4 class="info-titulo">Email do Cliente</h4>
+          <p class="info-conteudo"><%= @order.email %></p>
+        </div>
+        <div class="col-md-6 mb-3">
           <h4 class="info-titulo">Data de Fornecimento</h4>
           <p class="info-conteudo"><%= dataTempo(@order.data_fornecimento) %></p>
         </div>

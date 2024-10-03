@@ -1,0 +1,21 @@
+<%= turbo_frame_tag  "modal" do%>
+  <div class="popup">
+    <div style="margin-left:1rem">
+      <h1>Enviar Pedidos Para Cadastrar</h1>
+      <%= form_with url:import_orders_path, method: :post do |form| %>
+        <div>
+          <%= form.label :file, class: "form-label" %>
+          <%= form.file_field :file, class: "form-control", accept: ".csv" %>
+        </div>
+        <div>
+          <br>
+          <%= form.submit "Enviar", class: "btn btn-success"%>
+          <%= link_to "Cancelar", "#", data:{
+                controller: "modals",
+                action: "modals#close"
+              }, class: "cancel-button btn btn-danger" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<%end%>

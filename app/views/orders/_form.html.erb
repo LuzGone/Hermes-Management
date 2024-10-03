@@ -30,6 +30,11 @@
   </div>
 
   <div>
+    <%= form.label :email, class: "form-label" %>
+    <%= form.email_field :email, class: "form-control" %>
+  </div>
+
+  <div>
     <%= form.label :supplier_id, "Fornecedor", class: "form-label"%>
     <%= collection_select(:order, :supplier_id, Supplier.all, :id, :nome, options = {}, html_options = {class: "form-select"})%>
   </div>

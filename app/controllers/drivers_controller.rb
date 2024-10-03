@@ -95,11 +95,39 @@ class DriversController < ApplicationController
       vehicle_id = @driving.vehicle.id
       @transportings = Transporting.where(vehicle_id: vehicle_id)
       for transporting in @transportings
-        if transporting.order.transporting.last.vehicle_id == vehicle_id
+        if transporting.order.transporting.last.vehicle_id == vehicle_id && transporting.order.status_pedido == "A CAMINHO"
           @last_orders.push(transporting.order)
         end
       end
     end
+  end
+
+  #POST
+  def in_route
+    @driving = Driving.where(driver_id: params[:id]).last
+    @driver = @driving.driver
+    @vehicle = @driving.vehicle
+    @driver.update(situacao: "EM ROTA")
+    @vehicle.update(situacao: "EM ROTA")
+    if user_signed_in?
+      redirect_to drivers_path
+    elsif driver_signed_in?
+      redirect_to orders_drivers_path
+    end  
+  end
+
+  #POST
+  def exit_route
+    @driving = Driving.where(driver_id: params[:id]).last
+    @driver = @driving.driver
+    @vehicle = @driving.vehicle
+    @driver.update(situacao: "ATIVO")
+    @vehicle.update(situacao: "ATIVO")
+    if user_signed_in?
+      redirect_to drivers_path
+    elsif driver_signed_in?
+      redirect_to orders_drivers_path
+    end  
   end
 
   # GET /driver/1/orders_history

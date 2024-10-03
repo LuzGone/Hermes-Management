@@ -31,15 +31,9 @@ class DrivingsController < ApplicationController
     @driving.vehicle.update(situacao: "INATIVO")
 
     if params[:is_vehicle]
-      flash[:notice] = "Pedido Atualizado com Sucesso"
-      @pagy, @vehicles = pagy(Vehicle.all, limit: 10)
-      @drivings = Driving.all
-      render controller: 'vehicles', action: 'index'
+      redirect_to vehicles_path
     elsif params[:is_driver]
-      flash[:notice] = "Pedido Atualizado com Sucesso"
-      @pagy, @drivers = pagy(Driver.all, limit: 10)
-      @drivings = Driving.all
-      render controller: 'drivers', action: 'index'
+      redirect_to drivers_path
     end
   end
 

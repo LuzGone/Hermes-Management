@@ -1,4 +1,9 @@
-Rails.application.routes.draw do
+require 'sidekiq/web'
+Rails.application.routes.draw do 
+  authenticate :user do
+    mount Sidekiq::Web => '/sidekiq'
+  end
+
   devise_for :drivers, controllers:{
     sessions: 'drivers/sessions'
   }
@@ -7,12 +12,32 @@ Rails.application.routes.draw do
   }
   resources :suppliers
   resources :transportings
-  resources :drivings
+  resources :drivings do
+    collection do
+      post :unlink
+    end
+  end
   resources :admins
   resources :users
-  resources :vehicles
-  resources :drivers
-  resources :orders
+  resources :vehicles do
+    collection do
+      post :in_route
+      post :exit_route
+    end
+  end
+  resources :drivers do
+    collection do
+      get :orders
+      post :in_route
+      post :exit_route
+    end
+  end
+  resources :orders do
+    collection do
+      post :import
+      post :mark_as_delivered
+    end
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -24,7 +49,7 @@ Rails.application.routes.draw do
 
   get '/rastreio/:codigo_rastreio', to: 'orders#show_by_codigo_rastreio'
 
-  get '/mark_as_delivered/:id', to:'orders#mark_as_delivered'
+  post '/mark_as_delivered/:id', to:'orders#mark_as_delivered'
 
   get '/unlink/:id', to:'drivings#unlink'
 
@@ -35,5 +60,7 @@ Rails.application.routes.draw do
   get '/driver/:id/vehicles_history', to:'drivers#vehicles_history'
 
   get '/driver/profile', to:'drivers#profile'
+
+  get '/order/import', to:'orders#csv_form'
 
 end

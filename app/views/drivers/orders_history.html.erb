@@ -15,7 +15,6 @@
             <th scope="col">Endereço Destino</th>
             <th scope="col">Status</th>
             <th scope="col">Data de Despacho</th>
-            <th scope="col" class="text-center">Opções</th>
           </tr>
         </thead>
         <tbody>
@@ -37,13 +36,6 @@
                 </span>
               </td>
               <td><%= apenasData(transporting.data_despache) %></td>
-             <td class="text-center">
-              <div class="btn-group">
-                <%= link_to order_path(transporting.order), class: "btn btn-sm btn-outline-info", title: "Detalhar" do %>
-                  <i class="bi bi-search"></i>
-                <% end %>
-              </div>
-            </td>
             </tr>
           <% end %>
         </tbody>

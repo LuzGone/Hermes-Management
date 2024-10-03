@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  require "csv"
   before_action :set_order, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, only: [:index, :show, :new, :edit, :update, :destroy, :create]
   # GET /orders or /orders.json
@@ -39,6 +40,36 @@ class OrdersController < ApplicationController
     @suppliers = Supplier.all
   end
 
+  def csv_form
+  end
+
+  def import
+    file = params[:file]
+    if !file
+      return redirect_to orders_path
+    end
+    puts(file.content_type)
+    if file.content_type != "text/csv"
+      return redirect_to orders_path
+    end
+
+    file = File.open(file)
+    csv = CSV.parse(file, headers: true, col_sep:";")
+    csv.each do |row|
+      order_hash = {}
+      order_hash[:danfe] = row["DANFE"]
+      order_hash[:nfe] = row["NFE"]
+      order_hash[:codigo_rastreio] = row["Codigo de Rastreio"]
+      order_hash[:endereco_entrega] = row["Endereco"]
+      order_hash[:email] = row["Email"]
+      order_hash[:status_pedido] = "PENDENTE"
+      order_hash[:supplier_id] = Supplier.all.sample.id
+      order_hash[:data_fornecimento] = Time.now.in_time_zone('America/Sao_Paulo')
+      Order.create(order_hash)
+    end
+    redirect_to orders_path
+  end
+
   def mark_as_delivered
     @order = Order.find(params[:id])
     @last_transporting = Transporting.where(order_id: @order.id).last
@@ -49,10 +80,12 @@ class OrdersController < ApplicationController
       @order.update(status_pedido: "EM ESPERA")
     end
     atualizar_redis(@order)
-    flash[:notice] = "Pedido Atualizado com Sucesso"
-    @pagy, @orders = pagy(Order.order(created_at: :asc), limit: 10)
-    @suppliers = Supplier.all
-    render :index
+    if user_signed_in?
+      redirect_to orders_path
+    end
+    if driver_signed_in?
+      redirect_to orders_drivers_path
+    end
   end
 
   # GET /orders/1/edit
@@ -62,8 +95,8 @@ class OrdersController < ApplicationController
 
   # POST /orders or /orders.json
   def create
-    puts order_params
     @order = Order.new(order_params)
+    @order.data_fornecimento = Time.now.in_time_zone('America/Sao_Paulo')
 
     respond_to do |format|
       if @order.save
@@ -135,6 +168,6 @@ class OrdersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def order_params
-      params.require(:order).permit(:danfe, :nfe, :codigo_rastreio, :endereco_entrega, :status_pedido, :supplier_id,:data_fornecimento)
+      params.require(:order).permit(:danfe, :nfe, :codigo_rastreio, :endereco_entrega, :status_pedido, :supplier_id,:data_fornecimento,:email)
     end
 end

@@ -5,7 +5,6 @@ export default class extends Controller {
   connect() {
   }
   close(e){
-    e.preventDefault();
     const toast = document.getElementById("toast");
     toast.innerHTML = "";
     toast.removeAttribute("src");

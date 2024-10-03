@@ -65,7 +65,9 @@ for i in 1..200
         codigo_rastreio: "#{(rand(0.1..1)*10**11).to_i}",
         endereco_entrega: "Endereco Entrega #{i}",
         status_pedido: "PENDENTE", #['PENDENTE','A CAMINHO','ENTREGUE'].sample
-        supplier_id: fornecedores.sample.id
+        data_fornecimento: Time.now.in_time_zone('America/Sao_Paulo'),
+        supplier_id: fornecedores.sample.id,
+        email: "pedido#{i}@email.com"
     )
 end
 
