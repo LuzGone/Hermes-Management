@@ -95,7 +95,7 @@ class DriversController < ApplicationController
       vehicle_id = @driving.vehicle.id
       @transportings = Transporting.where(vehicle_id: vehicle_id)
       for transporting in @transportings
-        if transporting.order.transporting.last.vehicle_id == vehicle_id
+        if transporting.order.transporting.last.vehicle_id == vehicle_id && transporting.order.status_pedido == "A CAMINHO"
           @last_orders.push(transporting.order)
         end
       end

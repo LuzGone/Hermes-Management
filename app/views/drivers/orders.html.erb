@@ -10,7 +10,7 @@
         <%= form.hidden_field :id, value: current_driver.id %>
         <button class="btn btn-sm btn-info btn-outline-info">Iniciar Rota</button>
       <% end %>
-    <% elsif current_driver.situacao == "EM ROTA"%>
+    <% elsif current_driver.situacao == "EM ROTA" && @last_orders.length() == 0%>
       <%= form_with(url: exit_route_drivers_path, method: :post) do |form| %>
         <%= form.hidden_field :id, value: current_driver.id %>
         <button class="btn btn-sm btn-info btn-outline-info">Finalizar Rota</i></button>
@@ -26,7 +26,9 @@
             <th scope="col">Endereço Destino</th>
             <th scope="col">Status</th>
             <th scope="col">Data de Despacho</th>
-            <th scope="col" class="text-center">Opções</th>
+            <%if current_driver.situacao == "EM ROTA"%>
+              <th scope="col" class="text-center">Opções</th>
+            <%end%>
           </tr>
         </thead>
         <tbody>
@@ -49,16 +51,18 @@
                     </span>
                 </td>
                 <td><%= apenasData(order.transporting.last.data_despache) %></td>
-                <td class="text-center">
-                <div class="btn-group">
-                    <% if order.status_pedido == "A CAMINHO" %>
-                      <%= form_with(url: mark_as_delivered_orders_path, method: :post) do |form| %>
-                        <%= form.hidden_field :id, value: order.id %>
-                        <button class="btn btn-sm btn-outline-info"><i class="bi bi-check-lg"></i></button>
-                      <% end %>
-                    <% end %>
-                </div>
-                </td>
+                <%if current_driver.situacao == "EM ROTA"%>
+                  <td class="text-center">
+                    <div class="btn-group">
+                        <% if order.status_pedido == "A CAMINHO" %>
+                          <%= form_with(url: mark_as_delivered_orders_path, method: :post) do |form| %>
+                            <%= form.hidden_field :id, value: order.id %>
+                            <button class="btn btn-sm btn-outline-info"><i class="bi bi-check-lg"></i></button>
+                          <% end %>
+                        <% end %>
+                    </div>
+                  </td>
+                <%end%>
                 </tr>
             <%end%>
           <% end %>
