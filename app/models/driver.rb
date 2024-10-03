@@ -10,4 +10,11 @@ class Driver < ApplicationRecord
     validates :matricula, presence: {message: "Campo Obrigatório"}, uniqueness: {message: "Já Foi Utilizado"}, length: {is:12, message: "Precisa ter Exatamente 12 dígitos"}, numericality: {only_integer: true, message:"Apenas números são permitidos"}
     validates :endereco, presence: {message: "Campo Obrigatório"}
     validates :telefone, presence: {message: "Campo Obrigatório"}
+
+    def self.ransackable_attributes(auth_object = nil)
+      ["nome","matricula","endereco","telefone","situacao"]
+  end
+  def self.ransackable_associations(auth_object = nil)
+      [ "drivings", "vehicles"]
+  end
 end

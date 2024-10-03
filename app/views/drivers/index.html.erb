@@ -6,16 +6,21 @@
   </div>
 
   <div class="container-fluid">
+    <%= search_form_for @q do |f| %>
+      <%= f.label :nome_or_matricula_or_endereco_or_telefone_or_situacao_cont , "Pesquisa"%>
+      <%= f.search_field :nome_or_matricula_or_endereco_or_telefone_or_situacao_cont %>
+      <%= f.submit %>
+    <% end %>
     <div class="table-responsive shadow-sm p-4 mb-5 bg-white rounded">
       <table class="table table-hover table-borderless align-middle">
         <thead class="table-light">
           <tr>
             <th scope="col">#</th>
-            <th scope="col">Nome</th>
-            <th scope="col">Matricula</th>
-            <th scope="col">Endereço</th>
-            <th scope="col">Telefone</th>
-            <th scope="col">Situacao</th>
+            <th scope="col"><%= sort_link(@q, :nome, 'Nome') %></th>
+            <th scope="col"><%= sort_link(@q, :matricula, 'Matricula') %></th>
+            <th scope="col"><%= sort_link(@q, :endereco, 'Endereço') %></th>
+            <th scope="col"><%= sort_link(@q, :telefone, 'Telefone') %></th>
+            <th scope="col"><%= sort_link(@q, :situacao, 'Situacao') %></th>
             <th scope="col" class="text-center">Opções</th>
           </tr>
         </thead>

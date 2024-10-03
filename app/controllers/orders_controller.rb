@@ -4,7 +4,6 @@ class OrdersController < ApplicationController
   # GET /orders or /orders.json
   def index
     @q = Order.ransack(params[:q])
-    # @orders = @q.result(distinct: true)
     @pagy, @orders = pagy(@q.result.includes(:supplier), limit: 10)
     @suppliers = Supplier.all
   end
