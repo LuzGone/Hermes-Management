@@ -4,7 +4,8 @@ class VehiclesController < ApplicationController
 
   # GET /vehicles or /vehicles.json
   def index
-    @pagy, @vehicles = pagy(Vehicle.order(created_at: :asc), limit: 10)
+    @q = Vehicle.ransack(params[:q])
+    @pagy, @vehicles = pagy(@q.result.includes(:driving), limit: 10)
   end
 
   # GET /vehicles/1 or /vehicles/1.json
