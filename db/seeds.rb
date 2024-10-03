@@ -66,7 +66,8 @@ for i in 1..200
         endereco_entrega: "Endereco Entrega #{i}",
         status_pedido: "PENDENTE", #['PENDENTE','A CAMINHO','ENTREGUE'].sample
         data_fornecimento: Time.now.in_time_zone('America/Sao_Paulo'),
-        supplier_id: fornecedores.sample.id
+        supplier_id: fornecedores.sample.id,
+        email: "pedido#{i}@email.com"
     )
 end
 

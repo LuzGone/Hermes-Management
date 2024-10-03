@@ -61,6 +61,7 @@ class OrdersController < ApplicationController
       order_hash[:nfe] = row["NFE"]
       order_hash[:codigo_rastreio] = row["Codigo de Rastreio"]
       order_hash[:endereco_entrega] = row["Endereco"]
+      order_hash[:email] = row["Email"]
       order_hash[:status_pedido] = "PENDENTE"
       order_hash[:supplier_id] = Supplier.all.sample.id
       order_hash[:data_fornecimento] = Time.now.in_time_zone('America/Sao_Paulo')
@@ -167,6 +168,6 @@ class OrdersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def order_params
-      params.require(:order).permit(:danfe, :nfe, :codigo_rastreio, :endereco_entrega, :status_pedido, :supplier_id,:data_fornecimento)
+      params.require(:order).permit(:danfe, :nfe, :codigo_rastreio, :endereco_entrega, :status_pedido, :supplier_id,:data_fornecimento,:email)
     end
 end
