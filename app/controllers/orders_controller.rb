@@ -65,7 +65,7 @@ class OrdersController < ApplicationController
       order_hash[:status_pedido] = "PENDENTE"
       order_hash[:supplier_id] = Supplier.all.sample.id
       order_hash[:data_fornecimento] = Time.now.in_time_zone('America/Sao_Paulo')
-      Order.create(order_hash)
+      @order = Order.create(order_hash)
     end
     redirect_to orders_path
   end
@@ -100,6 +100,7 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       if @order.save
+        EmailJob.perform_async(@order.id)
         atualizar_redis(@order)
         flash.now[:notice] = "Pedido Criado com Sucesso"
         format.turbo_stream do
