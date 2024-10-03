@@ -90,10 +90,10 @@ class DriversController < ApplicationController
 
   # GET /driver/1/orders
   def orders
+    @last_orders = []
     if @driving = Driving.where(driver_id: current_driver.id).last
       vehicle_id = @driving.vehicle.id
       @transportings = Transporting.where(vehicle_id: vehicle_id)
-      @last_orders = []
       for transporting in @transportings
         if transporting.order.transporting.last.vehicle_id == vehicle_id
           @last_orders.push(transporting.order)
@@ -104,6 +104,7 @@ class DriversController < ApplicationController
 
   # GET /driver/1/orders_history
   def orders_history
+    @transportings = []
     if @driving = Driving.where(driver_id: current_driver.id).last 
       @transportings = Transporting.where(vehicle_id: @driving.vehicle.id) 
     end
