@@ -41,7 +41,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_01_123837) do
   create_table "drivings", force: :cascade do |t|
     t.bigint "driver_id", null: false
     t.bigint "vehicle_id", null: false
-    t.datetime "data_inicial", default: "2024-10-03 08:35:44", null: false
+    t.datetime "data_inicial", default: "2024-10-03 12:06:14", null: false
     t.datetime "data_final"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -72,7 +72,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_01_123837) do
   create_table "transportings", force: :cascade do |t|
     t.string "origem"
     t.string "destino"
-    t.datetime "data_despache", default: "2024-10-03 08:35:44", null: false
+    t.datetime "data_despache", default: "2024-10-03 12:06:14", null: false
     t.datetime "data_entrega"
     t.bigint "order_id", null: false
     t.bigint "vehicle_id", null: false

@@ -6,11 +6,12 @@
   </div>
 
   <div class="container-fluid">
-    <%= search_form_for @q do |f| %>
-      <%= f.label :nome_or_matricula_or_endereco_or_telefone_or_situacao_cont , "Pesquisa"%>
-      <%= f.search_field :nome_or_matricula_or_endereco_or_telefone_or_situacao_cont %>
-      <%= f.submit %>
-    <% end %>
+  <%= search_form_for @q do |f| %>
+    <div class="d-flex">
+      <%= f.search_field :nome_or_matricula_or_endereco_or_telefone_or_situacao_cont, placeholder:"Pesquisar" %>
+      <button class="btn btn-sm btn-outline-info"><i class="bi bi-search"></i></button>
+    </div>
+  <% end %>
     <div class="table-responsive shadow-sm p-4 mb-5 bg-white rounded">
       <table class="table table-hover table-borderless align-middle">
         <thead class="table-light">
