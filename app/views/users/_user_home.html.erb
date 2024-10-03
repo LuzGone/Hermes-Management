@@ -1,5 +1,12 @@
-<div class="main-content flex-grow-1 p-3">
-    <h1>Bem vindo <%= current_user.nome%></h1>
-    <hr>
-    <%= current_user.matricula%>
+<div class="main-content flex-grow-1 p-3 custom-home-style">
+  <div class="custom-card shadow-lg p-4 bg-white rounded">
+    <div class="text-center mb-4">
+      <h1 class="custom-title display-4 text-welcome">Bem-vindo, <%= current_user.nome %>!</h1>
+      <p class="custom-lead lead text-muted">Matrícula: <%= current_user.matricula %></p>
+      <h3> Acesse o menu lateral para realizar suas atividades</h3>
+    </div>
+    
+    <hr class="my-4">
+    
+  </div>
 </div>
