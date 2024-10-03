@@ -4,3 +4,11 @@
 <%elsif user_signed_in?%>
     <%= render partial: "/users/user_home" %>
 <%end%>
+
+
+<%if !driver_signed_in? && !user_signed_in?%>
+    <div class="image-container mt-4" style="width: 100%; height: 100v;">
+    <img src="https://brazilgreece.com/wp-content/uploads/2024/02/hermes-deus-grego.webp" alt="House Image" style="width: 100%; height: 100%; object-fit: cover;">
+</div>
+
+<%end%>
