@@ -10,6 +10,7 @@ OBS: Esse projeto necessita de um outro para acessar a parte do cliente que est√
   * PostgreSQL
   * Redis
   * [Hermes-Client](https://github.com/luzgone/hermes-client)
+  * Docker
 
 ## Passo a Passo
 
