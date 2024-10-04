@@ -1,5 +1,10 @@
 # Hermes - Sistema de Gestão de Entregas
 
+* Alunos:
+  * [Jardielen Sousa](https://github.com/jardsousa)
+  * [Louise Fernandes](https://github.com/louisefernandes)
+  * [Luiz Gonzaga](https://github.com/luzgone)
+
 OBS: Esse projeto necessita de um outro para acessar a parte do cliente que está presente no seguinte repositório:
 
 [Hermes-Client](https://github.com/luzgone/hermes-client)
@@ -7,10 +12,16 @@ OBS: Esse projeto necessita de um outro para acessar a parte do cliente que est�
 * Ruby version 3.3.4
 
 * Dependencies
+  * [Hermes-Client](https://github.com/luzgone/hermes-client)
+
+* Technologies
   * PostgreSQL
   * Redis
-  * [Hermes-Client](https://github.com/luzgone/hermes-client)
+  * Sidekiq
   * Docker
+  * Ruby
+  * Ruby On Rails
+  * Faraday
 
 ## Passo a Passo
 
@@ -55,7 +66,9 @@ $ bundle exec sidekiq
 $ rails s -p 3000
 ```
 
-* Se deu tudo certo no tela inicial da aplicação deverá aparecer um menu de login para motorista e usuário, se você olhar o arquivo de seed lá os emails de usuários sempre são **<usuarioX@email.com>** sendo X um numero do usuário começando a partir de 1, e a senha é **usuarioX**, O mesmo se aplica para motorista sendo **<motoristaX@email.com>** e sua senha **motoristaX**.
+* Se deu tudo certo no tela inicial da aplicação deverá aparecer um menu de login para motorista e usuário, se você olhar o arquivo de seed lá os emails de usuários sempre são **`usuarioX@email.com`** sendo X um numero do usuário começando a partir de 1, e a senha é **usuarioX**, O mesmo se aplica para motorista sendo **`motoristaX@email.com`** e sua senha **motoristaX**.
+
+* Lembrando que você pode alterar essas senhas e emails no **./db/seeds**
 
 * Segue abaixo uma tela da aplicação funcionando
 
